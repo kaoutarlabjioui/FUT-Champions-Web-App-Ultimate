@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+    font-family: Arial, sans-serif;
+}
+
+
+body{
+    background-image:url(./img/stadium_background.webp) ;background-repeat:no-repeat; min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    background-size: 100% auto;
+    background-position: center top 70px;
+    background-repeat: no-repeat; 
+    
+    
+}
+
+
+.hero{
+    font-family: Poppins, sans-serif;
+    color: white;
+    padding-top: 80px;
+    background-color: #292f36d1;
+    z-index: -1;
+    
+    
+
+}
+.hero-container{
+    padding: 50px;
+    
+    padding-left: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+}
+.hero-container li{
+    display: inline;
+    margin: 0 15px;
+    font-size: small;
+    color: rgba(255, 255, 255, 0.326);
+
+}
+.hero-container a{
+    color: white; 
+    text-decoration: none; 
+    font-size: small;
+    color: rgba(255, 255, 255, 0.326);
+}
+.hero-container h1 {
+    font-size:large;
+    
+
+}
+.hero-container h2{
+    font-size:small;
+
+}
+
+
+.hero-contain{
+   display: flex;
+   flex-direction: column;
+    padding-left: 50px;
+    background: url(./img/stadium.svg) no-repeat;
+    width: 900px;
+    color: white;
+    
+    
+}
+.cardid1{
+    border: none;
+    
+    padding: 0;
+    margin: 0;
+    position: relative;
+    aspect-ratio: 13/19;
+    height: 162px;
+    background: url(./img/badge_ballon_dor.webp) no-repeat;
+    background-position-x: center;
+    background-size: contain;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    user-select: none;
+    cursor: pointer;
+    color: white;
+    background-color: transparent;
+}
+.cardid1:hover{
+    filter: drop-shadow(0 -2px 3px #55CCA2) drop-shadow(0 8px 5px #55CCA2);
+     
+}
+.card-attack{
+    color: rgba(255, 255, 255, 0.301);
+    font-size: x-small;
+}
+
+.card-1{
+    font-size:x-small;
+    font-weight: bold;
+}
+.card-st{
+    background: url(/images/pos_base.png) no-repeat;
+    height: 45px;
+    width: 80px;
+     display:flex;
+     justify-content: center;
+     align-items: center;
+     
+}
