@@ -1,203 +1,523 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
-    <title>Document</title>
-    <style>
-      body{
-        height: 90vh;
-      }
 
-      #players-container{
-    display: flex; 
-    flex-wrap: wrap;
-     width: 50%;
-     min-height: 50%;
-     overflow: hidden;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+  <title>Document</title>
+  <style>
+    body {
+      height: 90vh;
+    }
+
+    #players-container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 50%;
+      min-height: 50%;
+      overflow: hidden;
+    }
+
+    .player-contain1 {
+      color: #ffd972;
+      background: url(./src/assets/img/toty.jpg) no-repeat;
+      height: 300px;
+      width: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .player_adjuster {
+      padding-top: 20px;
+      padding-left: 17px;
+    }
+
+    .item1 {
+      grid-area: gk;
+      text-align: center;
+    }
+
+    .item2 {
+      grid-area: rb;
+      text-align: center;
+    }
+
+    .item3 {
+      grid-area: lb;
+      text-align: center;
+    }
+
+    .item4 {
+      grid-area: cmr;
+      text-align: center;
+    }
+
+    .item5 {
+      grid-area: cml;
+      text-align: center;
+    }
+
+    .item6 {
+      grid-area: dm;
+      text-align: center;
+    }
+
+    .item7 {
+      grid-area: rw;
+      text-align: center;
+    }
+
+    .item8 {
+      grid-area: lw;
+      text-align: center;
+    }
+
+    .item9 {
+      grid-area: cf;
+      text-align: center;
+    }
+
+    .item10 {
+      grid-area: cb1;
+      text-align: center;
+    }
+
+    .item11 {
+      grid-area: cb2;
+      text-align: center;
+    }
+
+    .items {
+      height: 100px;
+      background-image: url(./src/assets/img/badge_gold.webp);
+      background-repeat: no-repeat;
+      background-position-x: center;
+      background-size: contain;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #list {
+      max-height: 400px;
+      /* Set the maximum height of the container */
+      overflow-y: auto;
+      /* Enable vertical scrolling if the content exceeds max-height */
+      padding-right: 0px;
+      /* Optional, to ensure the scrollbar doesn't cover content */
+    }
+
+    #container {
+      background-image: url("./src/assets/img/stadium.svg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 90%;
+      width: 64%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 2fr 1fr 1fr 1fr 1fr;
+      gap: 0px 0px;
+      grid-auto-flow: row;
+      grid-template-areas:
+        ". lw cf rw ."
+        ". cml . cmr ."
+        ". . dm . ."
+        "lb . . . rb"
+        ". cb1 . cb2 .."
+        ". . gk . .";
+    }
+    .form-container {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 30px 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 450px;
+    height: auto;
+    width: 400px;
+    animation: fadeIn 0.5s ease;
 }
-.player-contain1{
-    color: #FFD972;
-    background: url(./src/assets/img/toty.jpg) no-repeat;
-    height: 300px;
-    width: 180px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.player_adjuster{
-  padding-top: 16px;
-  padding-left:17px;
+form .form-container h1 {
+    font-size: 24px;
+    text-align: center;
+    color: #4facfe;
+    margin-bottom: 20px;
+    font-weight: 700;
 }
 
-
-      .item1 {
-        grid-area: gk;
-        text-align: center;
-      }
-
-      .item2 {
-        grid-area: rb;
-        text-align: center;
-      }
-
-      .item3 {
-        grid-area: lb;
-        text-align: center;
-      }
-
-      .item4 {
-        grid-area: cmr;
-        text-align: center;
-      }
-
-      .item5 {
-        grid-area: cml;
-        text-align: center;
-      }
-
-      .item6 {
-        grid-area: dm;
-        text-align: center;
-      }
-
-      .item7 {
-        grid-area: rw;
-        text-align: center;
-      }
-
-      .item8 {
-        grid-area: lw;
-        text-align: center;
-      }
-
-      .item9 {
-        grid-area: cf;
-        text-align: center;
-      }
-
-      .item10 {
-        grid-area: cb1;
-        text-align: center;
-        
-      }
-
-      .item11 {
-        grid-area: cb2;
-        text-align: center;
-       
-
-      }
-      .items {
-        height: 100px;
-        background-image: url(./src/assets/img/badge_gold.webp);
-        background-repeat: no-repeat;
-        background-position-x: center;
-        background-size: contain;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      #list {
-  max-height: 400px;  /* Set the maximum height of the container */
-  overflow-y: auto;   /* Enable vertical scrolling if the content exceeds max-height */
-  padding-right: 0px; /* Optional, to ensure the scrollbar doesn't cover content */
+form .form-container label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
 }
 
-      #container {
-        background-image: url('./src/assets/img/stadium.svg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        height: 90%;
-        width: 64%;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        grid-template-rows: 1fr 2fr 1fr 1fr 1fr 1fr;
-        gap: 0px 0px;
-        grid-auto-flow: row;
-        grid-template-areas:
-          ". lw cf rw ."
-          ". cml . cmr ."
-            ". . dm . ."
-           "lb . . . rb"
-          ". cb1 . cb2 .."
-          ". . gk . .";
-      }
-    </style>
-  </head>
-  <body  class="main_background w-full flex flex-col px-[120px] pb-[50px] bg-[url('./src/assets/img/stadium_background.webp')] bg-no-repeat bg-cover">
-     <!-- C:\Users\Youcode\Desktop\FUT-Champions-Web-App-Ultimate\src\assets\img\stadium_background.webp -->
+form .form-container input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    background: #f9f9f9;
+    transition: border-color 0.3s;
+}
 
-      <div class="py-[20px]">
-        <h5 class="text-white font-[700] text-[20px]">
-          EA FC 25 Tactics & Formations
-        </h5>
-        <p class="text-white text-[12px]">Build Custom Tactics & Formations</p>
+form .form-container input:focus, select:focus {
+    border-color: #4facfe;
+    outline: none;
+    box-shadow: 0 0 5px rgba(79, 172, 254, 0.5);
+}
+
+form .form-container input[type="file"] {
+    padding: 5px;
+    background: #f9f9f9;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+form .form-container button {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #4facfe;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+form .form-container button:hover {
+    background-color: #00c6fb;
+    transform: scale(1.02);
+}
+
+form .form-container button:active {
+    background-color: #4facfe;
+    transform: scale(0.98);
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    input, select {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+  </style>
+</head>
+
+<body
+  class="main_background w-full flex flex-col px-[120px] pb-[50px] bg-[url('./src/assets/img/stadium_background.webp')] bg-no-repeat bg-cover">
+  <!-- C:\Users\Youcode\Desktop\FUT-Champions-Web-App-Ultimate\src\assets\img\stadium_background.webp -->
+
+  <div class="py-[20px]">
+    <h5 class="text-white font-[700] text-[20px]">
+      EA FC 25 Tactics & Formations
+    </h5>
+    <p class="text-white text-[12px]">Build Custom Tactics & Formations</p>
+  </div>
+
+  <!-- <div id="overlay" class="cursor-pointer fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+    <div class="p-8 rounded-lg bg-black max-w-[1000px] w-full mx-4">
+      <div>
+        <button class="bg-red-500">cancel</button>
       </div>
+    </div>
+  </div> -->
+<!-- terrain -->
+  <div class="w-full flex justify-center">
+    <div id="container">
+      <div class="item1 items" id="GK" data-modal-target="default-modal" data-modal-toggle="default-modal">
+        <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path d="M9 12H12M15 12H12M12 12V9M12 12V15" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path
+              d="M11.7 1.1732C11.8856 1.06603 12.1144 1.06603 12.3 1.17321L21.2263 6.3268C21.4119 6.43397 21.5263 6.63205 21.5263 6.84641V17.1536C21.5263 17.3679 21.4119 17.566 21.2263 17.6732L12.3 22.8268C12.1144 22.934 11.8856 22.934 11.7 22.8268L2.77372 17.6732C2.58808 17.566 2.47372 17.3679 2.47372 17.1536V6.84641C2.47372 6.63205 2.58808 6.43397 2.77372 6.32679L11.7 1.1732Z"
+              stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </g>
+        </svg>
+      </div>
+      <div class="item2 items" id="rb" data-modal-target="default-modal" data-modal-toggle="default-modal">
+        <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path d="M9 12H12M15 12H12M12 12V9M12 12V15" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path
+              d="M11.7 1.1732C11.8856 1.06603 12.1144 1.06603 12.3 1.17321L21.2263 6.3268C21.4119 6.43397 21.5263 6.63205 21.5263 6.84641V17.1536C21.5263 17.3679 21.4119 17.566 21.2263 17.6732L12.3 22.8268C12.1144 22.934 11.8856 22.934 11.7 22.8268L2.77372 17.6732C2.58808 17.566 2.47372 17.3679 2.47372 17.1536V6.84641C2.47372 6.63205 2.58808 6.43397 2.77372 6.32679L11.7 1.1732Z"
+              stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </g>
+        </svg>
+      </div>
+      <div class="item3 items" id="lb" data-modal-target="default-modal" data-modal-toggle="default-modal">
+        <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path d="M9 12H12M15 12H12M12 12V9M12 12V15" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path
+              d="M11.7 1.1732C11.8856 1.06603 12.1144 1.06603 12.3 1.17321L21.2263 6.3268C21.4119 6.43397 21.5263 6.63205 21.5263 6.84641V17.1536C21.5263 17.3679 21.4119 17.566 21.2263 17.6732L12.3 22.8268C12.1144 22.934 11.8856 22.934 11.7 22.8268L2.77372 17.6732C2.58808 17.566 2.47372 17.3679 2.47372 17.1536V6.84641C2.47372 6.63205 2.58808 6.43397 2.77372 6.32679L11.7 1.1732Z"
+              stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </g>
+        </svg>
+      </div>
+      <div class="item4 items" id="m" data-modal-target="default-modal" data-modal-toggle="default-modal">
+        <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path d="M9 12H12M15 12H12M12 12V9M12 12V15" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path
+              d="M11.7 1.1732C11.8856 1.06603 12.1144 1.06603 12.3 1.17321L21.2263 6.3268C21.4119 6.43397 21.5263 6.63205 21.5263 6.84641V17.1536C21.5263 17.3679 21.4119 17.566 21.2263 17.6732L12.3 22.8268C12.1144 22.934 11.8856 22.934 11.7 22.8268L2.77372 17.6732C2.58808 17.566 2.47372 17.3679 2.47372 17.1536V6.84641C2.47372 6.63205 2.58808 6.43397 2.77372 6.32679L11.7 1.1732Z"
+              stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </g>
+        </svg>
+      </div>
+      <div class="item5 items" id="cm" data-modal-target="default-modal" data-modal-toggle="default-modal">
+        <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path d="M9 12H12M15 12H12M12 12V9M12 12V15" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path
+              d="M11.7 1.1732C11.8856 1.06603 12.1144 1.06603 12.3 1.17321L21.2263 6.3268C21.4119 6.43397 21.5263 6.63205 21.5263 6.84641V17.1536C21.5263 17.3679 21.4119 17.566 21.2263 17.6732L12.3 22.8268C12.1144 22.934 11.8856 22.934 11.7 22.8268L2.77372 17.6732C2.58808 17.566 2.47372 17.3679 2.47372 17.1536V6.84641C2.47372 6.63205 2.58808 6.43397 2.77372 6.32679L11.7 1.1732Z"
+              stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </g>
+        </svg>
+      </div>
+      <div class="item6 items" id="cdm" data-modal-target="default-modal" data-modal-toggle="default-modal">
+        <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path d="M9 12H12M15 12H12M12 12V9M12 12V15" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path
+              d="M11.7 1.1732C11.8856 1.06603 12.1144 1.06603 12.3 1.17321L21.2263 6.3268C21.4119 6.43397 21.5263 6.63205 21.5263 6.84641V17.1536C21.5263 17.3679 21.4119 17.566 21.2263 17.6732L12.3 22.8268C12.1144 22.934 11.8856 22.934 11.7 22.8268L2.77372 17.6732C2.58808 17.566 2.47372 17.3679 2.47372 17.1536V6.84641C2.47372 6.63205 2.58808 6.43397 2.77372 6.32679L11.7 1.1732Z"
+              stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </g>
+        </svg>
+      </div>
+      <div class="item7 items" id="rw" data-modal-target="default-modal" data-modal-toggle="default-modal">
+        <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path d="M9 12H12M15 12H12M12 12V9M12 12V15" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path
+              d="M11.7 1.1732C11.8856 1.06603 12.1144 1.06603 12.3 1.17321L21.2263 6.3268C21.4119 6.43397 21.5263 6.63205 21.5263 6.84641V17.1536C21.5263 17.3679 21.4119 17.566 21.2263 17.6732L12.3 22.8268C12.1144 22.934 11.8856 22.934 11.7 22.8268L2.77372 17.6732C2.58808 17.566 2.47372 17.3679 2.47372 17.1536V6.84641C2.47372 6.63205 2.58808 6.43397 2.77372 6.32679L11.7 1.1732Z"
+              stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </g>
+        </svg>
+      </div>
+      <div class="item8 items" id="lw" data-modal-target="default-modal" data-modal-toggle="default-modal">
+        <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path d="M9 12H12M15 12H12M12 12V9M12 12V15" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path
+              d="M11.7 1.1732C11.8856 1.06603 12.1144 1.06603 12.3 1.17321L21.2263 6.3268C21.4119 6.43397 21.5263 6.63205 21.5263 6.84641V17.1536C21.5263 17.3679 21.4119 17.566 21.2263 17.6732L12.3 22.8268C12.1144 22.934 11.8856 22.934 11.7 22.8268L2.77372 17.6732C2.58808 17.566 2.47372 17.3679 2.47372 17.1536V6.84641C2.47372 6.63205 2.58808 6.43397 2.77372 6.32679L11.7 1.1732Z"
+              stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </g>
+        </svg>
+      </div>
+      <div class="item9 items" id="st" data-modal-target="default-modal" data-modal-toggle="default-modal">
+        <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path d="M9 12H12M15 12H12M12 12V9M12 12V15" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path
+              d="M11.7 1.1732C11.8856 1.06603 12.1144 1.06603 12.3 1.17321L21.2263 6.3268C21.4119 6.43397 21.5263 6.63205 21.5263 6.84641V17.1536C21.5263 17.3679 21.4119 17.566 21.2263 17.6732L12.3 22.8268C12.1144 22.934 11.8856 22.934 11.7 22.8268L2.77372 17.6732C2.58808 17.566 2.47372 17.3679 2.47372 17.1536V6.84641C2.47372 6.63205 2.58808 6.43397 2.77372 6.32679L11.7 1.1732Z"
+              stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </g>
+        </svg>
+      </div>
+      <div class="item10 items" id="cb" data-modal-target="default-modal" data-modal-toggle="default-modal">
+        <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path d="M9 12H12M15 12H12M12 12V9M12 12V15" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path
+              d="M11.7 1.1732C11.8856 1.06603 12.1144 1.06603 12.3 1.17321L21.2263 6.3268C21.4119 6.43397 21.5263 6.63205 21.5263 6.84641V17.1536C21.5263 17.3679 21.4119 17.566 21.2263 17.6732L12.3 22.8268C12.1144 22.934 11.8856 22.934 11.7 22.8268L2.77372 17.6732C2.58808 17.566 2.47372 17.3679 2.47372 17.1536V6.84641C2.47372 6.63205 2.58808 6.43397 2.77372 6.32679L11.7 1.1732Z"
+              stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </g>
+        </svg>
+      </div>
+      <div class="item11 items" id="b" data-modal-target="default-modal" data-modal-toggle="default-modal">
+        <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path d="M9 12H12M15 12H12M12 12V9M12 12V15" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path
+              d="M11.7 1.1732C11.8856 1.06603 12.1144 1.06603 12.3 1.17321L21.2263 6.3268C21.4119 6.43397 21.5263 6.63205 21.5263 6.84641V17.1536C21.5263 17.3679 21.4119 17.566 21.2263 17.6732L12.3 22.8268C12.1144 22.934 11.8856 22.934 11.7 22.8268L2.77372 17.6732C2.58808 17.566 2.47372 17.3679 2.47372 17.1536V6.84641C2.47372 6.63205 2.58808 6.43397 2.77372 6.32679L11.7 1.1732Z"
+              stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="col-span-2 text-white p-[20px] flex flex-col w-[30%]">
+      <div class="bg-black p-6 rounded-lg gap-3 flex flex-col">
+        <div class="flex flex-col gap-3">
+          <h4 class="text-[20px] font-[600]">Formation</h4>
+          <select name="" id=""
+            class="rounded border border-[#4c4c4c] bg-black p-2 focus:ring-orange focus:border-orange">
+            <option selected="all">choisi une formation</option>
+            <option>2-4-4</option>
+            <option>4-3-3</option>
+          </select>
+        </div>
+        <div class="flex flex-col gap-3">
+          <h4 class="text-[20px] font-[600]">Players</h4>
+          <button id="chose_player" type="button"
+            class="focus:outline-none text-white bg-orange-800 font-medium rounded text-sm px-5 py-2.5 me-2 mb-2">
+            Add your player
+          </button>
 
-      <div
-        id="overlay"
-        class="cursor-pointer fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50"
-      >
-        <div class="p-8 rounded-lg bg-black max-w-[1000px] w-full mx-4">
-          <div>
-            <button class="bg-red-500">cancel</button>
-          </div>
+          <div id="list1" style="overflow-y: scroll" class="flex flex-col"></div>
         </div>
       </div>
-      <div class="w-full flex justify-center ">
-        <div id="container">
-          <div class=" item1 items" id="GK"  data-modal-target="default-modal" data-modal-toggle="default-modal"> <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M9 12H12M15 12H12M12 12V9M12 12V15" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M11.7 1.1732C11.8856 1.06603 12.1144 1.06603 12.3 1.17321L21.2263 6.3268C21.4119 6.43397 21.5263 6.63205 21.5263 6.84641V17.1536C21.5263 17.3679 21.4119 17.566 21.2263 17.6732L12.3 22.8268C12.1144 22.934 11.8856 22.934 11.7 22.8268L2.77372 17.6732C2.58808 17.566 2.47372 17.3679 2.47372 17.1536V6.84641C2.47372 6.63205 2.58808 6.43397 2.77372 6.32679L11.7 1.1732Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></div>
-          <div class=" item2 items" id="rb" ></div>
-          <div class=" item3 items" id="lb" ></div>
-          <div class=" item4 items" id="m" ></div>
-          <div class=" item5 items" id="cm" ></div>
-          <div class=" item6 items" id="cdm"   ></div>
-          <div class=" item7 items"   id="rw" ></div>
-          <div class=" item8 items" d="lw" ></div>
-          <div class=" item9 items"id="st"></div>
-          <div  class=" item10 items" id="cb"></div>
-          <div  class=" item11 items" id="b"></div>
-        </div>
-        <div class="col-span-2 text-white p-[20px] flex flex-col w-[30%]">
-          <div class="bg-black p-6 rounded-lg gap-3 flex flex-col">
-            <div class="flex flex-col gap-3">
-              <h4 class="text-[20px] font-[600]">Formation</h4>
-              <select
-                name=""
-                id=""
-                class="rounded border border-[#4c4c4c] bg-black p-2 focus:ring-orange focus:border-orange"
-              >
-                <option selected="all">choisi une formation</option>
-                <option>2-4-4</option>
-                <option>4-3-3</option>
-              </select>
-            </div>
-            <div class="flex flex-col gap-3">
-              <h4 class="text-[20px] font-[600]">Players</h4>
-              <button
-                id="chose_player"
-                type="button"
-                class="focus:outline-none text-white bg-orange-800 font-medium rounded text-sm px-5 py-2.5 me-2 mb-2">
-                Choose your player
-              </button>
-              
-              <div id="list1" style=" overflow-y: scroll;" class="flex flex-col ">
-    
-              </div>
-            </div>
-          </div>
-        </div>
-     <!-- <img src="./src/assets/img/stadium.svg"> -->
-      </div>
+    </div>
+    <!-- <img src="./src/assets/img/stadium.svg"> -->
+  </div>
+  <!-- players cards Modal  -->
 
-      <!-- <div class="col-span-4 relative text-white flex flex-col justify-center items-center" >
+  <div id="default-modal" tabindex="-1" aria-hidden="true"
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-2xl max-h-full">
+      <!-- Modal content -->
+      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <!-- Modal header -->
+        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+            choose you ultimat team
+          </h3>
+          <button type="button"
+            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            data-modal-hide="default-modal">
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+        </div>
+        <!-- Modal body -->
+        <div class="p-4 md:p-5 space-y-4">
+          <div id="list" style="overflow-y: scroll" class="flex"></div>
+        </div>
+        <!-- Modal footer -->
+        <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+          <button data-modal-hide="default-modal" type="button"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            I accept
+          </button>
+          <button data-modal-hide="default-modal" type="button"
+            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+            Decline
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--add players form-->
+<form>
+  <div   class="form-container"        id="form">
+  <label for="nom">Name</label>
+  <input type="text"  id="name" class="name" placeholder="Enter your player name" required>
+  <label for="photo">Photo</label>
+  <input type="url"  id="photo" class="photo" placeholder="Entre your photo url" required>
+  <label for="position">Position</label>
+  <select name="position" id="position" required>
+    <option value="GK">Gk</option>
+    <option value="RW">RW</option>
+    <option value="LW">LW</option>
+    <option value="CM">CM</option>
+    <option value="LB">LB</option>
+    <option value="CB">CB</option>
+    <option value="ST">ST</option>
+  </select>
+  <label for="nationality">Nationality</label>
+  <input type="text"  id="nationality" class="nationality" placeholder="Entre your nationality" required>
+  <label for="flag">Flag</label>
+  <input type="url"  id="flag" class="flag" placeholder="Entre your flag url" required>
+  <label for="club">Club</label>
+  <input type="text"  id="club" class="club" placeholder="Entre your club name" required>
+  <label for="logo">Logo</label>
+  <input type="url"  id="logo" class="logo" placeholder="Entre your logo url" required>
+  <label for="rating">Rating</label>
+  <input type="number"  id="rating" class="rating" placeholder="Entre your rating" required>
+  <label for="pace-diving">Pace/Diving</label>
+  <input type="number"  id="pace-diving" class="pace-diving" placeholder="Entre your pace-diving " required>
+  <label for="Shooting-handling">Shooting/Handling</label>
+  <input type="number"  id="Shooting-handling" class="Shooting-handling" placeholder="Entre your Shooting-handling " required>
+  <label for="passing-kicking">Passing/Kicking</label>
+  <input type="number"  id="passing-kicking" class="passing-kicking" placeholder="Entre your passing-kicking" required>
+  <label for="dribbling/reflexes">Dribbling/Reflexes</label>
+  <input type="number"  id="dribbling/reflexes" class="dribbling/reflexes" placeholder="Entre your dribbling/reflexes" required>
+  <label for="defending-speed">Defending/Speed</label>
+  <input type="number"  id="defending-speed" class="defending-speed" placeholder="Entre your defending-speed" required>
+  <label for="physical-positioning">Physical/Positioning</label>
+  <input type="number"  id="physical-positioning" class="physical-positioning" placeholder="Entre your hysical-positioning" required>
+  <button id ="submitButton"type="submit">Add Player</button>
+                <br>
+                <br>
+                <button id ="close" type="close">Close</button>
+</div>
+</form>
+
+
+
+
+
+  <!-- <div class="col-span-4 relative text-white flex flex-col justify-center items-center" >
 
      <div class="grid z-40 px-[30px] gap-5 absolute w-full h-full  p-[40px]" >
         <div class="flex  w-full gap-[90px]  justify-center" >
@@ -222,39 +542,8 @@
      <img src="./src/assets/img/stadium.svg">
     </div> -->
 
+  <script src="./script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+</body>
 
-    <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-      <div class="relative p-4 w-full max-w-2xl max-h-full">
-          <!-- Modal content -->
-          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-              <!-- Modal header -->
-              <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                      Terms of Service
-                  </h3>
-                  <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
-                      <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                      </svg>
-                      <span class="sr-only">Close modal</span>
-                  </button>
-              </div>
-              <!-- Modal body -->
-              <div class="p-4 md:p-5 space-y-4">
-                <div id="list" style=" overflow-y: scroll;" class="flex  ">
-    
-                </div>
-              </div>
-              <!-- Modal footer -->
-              <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                  <button data-modal-hide="default-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I accept</button>
-                  <button data-modal-hide="default-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Decline</button>
-              </div>
-          </div>
-      </div>
-  </div>
-
-    <script src="./script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
-  </body>
 </html>

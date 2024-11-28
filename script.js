@@ -41,48 +41,28 @@ data.players.forEach(player => {
   html += `  <div class="players-contain" >
   <div  class ="player-contain1">
      
-      <div class="flex flex-">
+      <div class="flex ">
       <div class="player_adjuster font-bold text-xl font-mono">
-      <h6>`+ player.position + `</h6>
-      <h4>`+ player.rating + `</h4>
+      <h6>${player.position}</h6>
+      <h4>${player.rating}</h4>
       </div>
-      <img src="`+ player.photo + `" alt="">
+      <img src="${player.photo}" alt="">
       </div>
       <div class="bg-blue-900/80 ">
-    <h6 class="text-lg text-center text-yellow-500" > `+ player.name + `</h6>
-    `
-if (player.position == "GK") {
-  html += `  <div>
-      
-      <span>`+ player.rating + `</span>
-      <span>`+ player.diving+ `</span>
-      <span>`+ player.handling + `</span>
-      <span>`+ player.kicking + `</span>
-      <span>`+ player.reflexes + `</span>
-      <span>`+ player.speed +`</span>
-      <span>`+ player.positioning+`</span>
-      
-  </div>`
-
-} else {
-  html += `  <div>
-      
-      <span>`+ player.pace + `</span>
-      <span>`+ player.shooting + `</span>
-      <span>`+ player.passing + `</span>
-      <span>`+ player.dribbling + `</span>
-      <span>`+ player.defending + `</span>
-      <span>`+ player.physical + `</span>
-  </div>`
-}
-
-html += ` 
+    <h6 class="text-lg text-center text-yellow-500 text-wrap" > ${player.name}</h6>
 </div>
-<div class="">
-    <p>`+ player.nationality + `</p> 
-    <div style="padding-bottom: 30px;" class="flex justify-evenly">
-    <img style="border-radius: 50%; width:20px; height:20px"  src="`+ player.flag + `" alt="">
-    <img style="border-radius: 50%; width:20px; height:20px"  src="`+ player.logo + `" alt="">
+<div class=" text-center">
+      <span>${player.rating}</span>
+      <span>${player.pace || player.diving}</span>
+      <span>${player.shooting || player.handling}</span>
+      <span>${player.passing || player.kicking}</span>
+      <span>${player.dribbling || player.reflexes}</span>
+      <span>${player.defending || player.speed}</span>
+      <span>${player.physical || player.positioning}</span>
+    <p>${player.nationality}</p> 
+    <div style="padding-bottom: 50px;" class="flex justify-evenly">
+    <img style="border-radius: 50%; width:20px; height:20px"  src="${player.flag}" alt="">
+    <img style="border-radius: 50%; width:20px; height:20px"  src="${player.logo}" alt="">
     </div>
   </div>
 </div>
@@ -94,6 +74,30 @@ return html
 }
 
 
+// if (player.position == "GK") {
+//   html += `  <div text-center>
+      
+//       <span>${player.rating}</span>
+//       <span>${player.diving}</span>
+//       <span>${player.handling}</span>
+//       <span>${player.kicking}</span>
+//       <span>${player.reflexes}</span>
+//       <span>${player.speed}</span>
+//       <span>${player.positioning}</span>
+      
+//   </div>`
+
+// } else {
+//   html += `  <div>
+      
+//       <span>${player.pace}</span>
+//       <span>${player.shooting}</span>
+//       <span>${player.passing}</span>
+//       <span>${player.dribbling}</span>
+//       <span>${player.defending}</span>
+//       <span>${player.physical}</span>
+//   </div>`
+// }
 
 
 
