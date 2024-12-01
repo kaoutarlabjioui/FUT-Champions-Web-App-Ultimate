@@ -25,52 +25,94 @@ async function load() {
 }
 load()
 
+Array.from(document.getElementsByClassName("items")).forEach((item) => {
+  item.addEventListener("click", (e) => {
+    // Get the "position" attribute of the clicked element
+    let position = e.currentTarget.getAttribute("position");
+    // console.log(e.currentTarget)
+    // console.log(position)
+    // Filter the player data based on the "position"
+    let html = ""
+    let filteredPlayers = data.players.filter(player => player.position.toLowerCase() == position.toLowerCase());
+    filteredPlayers.forEach(player => {
+      html +=
+      `  <div class="players-contain" >
+<div class ="player-contain1">
+    <div class="flex ">
+    <div class="player_adjuster font-bold text-xl font-mono">
+    <h6>${player.position}</h6>
+    <h4>${player.rating}</h4>
+    </div>
+    <img src="${player.photo}" alt="">
+    </div>
+    <div class="bg-blue-900/80 ">
+  <h6 class="text-lg text-center text-yellow-500 text-wrap" > ${player.name}</h6>
+</div>
+<div class=" text-center">
+    <span>${player.rating}</span>
+    <span>${player.pace || player.diving}</span>
+    <span>${player.shooting || player.handling}</span>
+    <span>${player.passing || player.kicking}</span>
+    <span>${player.dribbling || player.reflexes}</span>
+    <span>${player.defending || player.speed}</span>
+    <span>${player.physical || player.positioning}</span>
+  <p>${player.nationality}</p> 
+  <div style="padding-bottom: 50px;" class="flex justify-evenly">
+  <img style="border-radius: 50%; width:20px; height:20px"  src="${player.flag}" alt="">
+  <img style="border-radius: 50%; width:20px; height:20px"  src="${player.logo}" alt="">
+  </div>
+</div>
+</div>
+
+</div>`
+
+
+    })
+    document.getElementById("list").innerHTML = html
+    // Do something with the filtered players, for example, log them
+    // console.log(filteredPlayers);
+  });
+});
+
+
+
+
 const post = document.getElementById("position");
+
 const infoplayer = document.getElementById("info-player")
-// let pace = document.querySelector(".pace");
+let pace = document.querySelector(".pace");
 let shooting = document.querySelector(".shooting");
-// let passing = document.querySelector(".passing");
-// let dribbling = document.querySelector(".dribbling");
-// let defending = document.querySelector(".defending");
-// let physical = document.querySelector(".physical");
+let passing = document.querySelector(".passing");
+let dribbling = document.querySelector(".dribbling");
+let defending = document.querySelector(".defending");
+let physical = document.querySelector(".physical");
 post.addEventListener('change', (event) => {
   if (event.target.value === 'GK') {
- 
-
-    // pace.innerText = "Diving";
+    pace.innerText = "Diving";
     shooting.innerText="Handling";
-    // passing.innerText="Kicking";
-    // dribbling.innerText="Reflexes";
-    // defending.innerText="Speed";
-    // physical.innerText="Positioning";
-
+    passing.innerText="Kicking";
+    dribbling.innerText="Reflexes";
+    defending.innerText="Speed";
+    physical.innerText="Positioning";
   }
-
   else {
-    infoplayer.innerHTML = `<div class="info-player">
-                <label for="pace">Pace</label>
-                <input type="number"  id="pace" class="pace" placeholder="Entre your pace" required>
-                <label for="shooting">Shooting</label>
-                <input type="number"  id="shooting" class="shooting" placeholder="Entre your shooting " required>
-                <label for="passing">Passing</label>
-                <input type="number"  id="passing" class="passing" placeholder="Entre your passing" required>
-                <label for="dribbling">Dribbling</label>
-                <input type="number"  id="dribbling" class="dribbling" placeholder="Entre your dribbling" required>
-                <label for="defending">Defending</label>
-                <input type="number"  id="defending" class="defending" placeholder="Entre your defending" required>
-                <label for="physical">Physical</label>
-                <input type="number"  id="physical" class="physical" placeholder="Entre your physical" required>
-              </div>`
+    pace.innerText = "Pace";
+    shooting.innerText="Shooting";
+    passing.innerText="Passing";
+    dribbling.innerText="Dribbling";
+    defending.innerText="Defending";
+    physical.innerText="Physical";
 
   }
 
 });
 
 const submitit = document.getElementById("submitButton");
+console.log(submitit);
 
 function validateText(text) {
   let regex = /^[A-Za-z]+$/;
-  if (text.value == "" || !regex.test(text.value)) {
+  if ( !regex.test(text.value)) {
     return false
   }
 
@@ -106,6 +148,8 @@ function validateForm(form) {
   let isValidate = true;
 
   let validateName = validateText(form.name);
+  console.log(validateName);
+  
   if (!validateName) {
     showNameStatus(false, "name is empty");
     isValidate = false;
@@ -114,6 +158,8 @@ function validateForm(form) {
   }
 
   let validatePhoto = validateImg(form.photo);
+  console.log(validatePhoto);
+  
   if (!validatePhoto) {
     showPhotoStatus(false, "url is empty");
     isValidate = false;
@@ -129,6 +175,8 @@ function validateForm(form) {
   // }
 
   let validateNationality = validateText(form.nationality);
+  console.log(validateNationality);
+  
   if (!validateNationality) {
     showNationalityStatus(false, "Nationality is empty");
     isValidate = false;
@@ -137,6 +185,8 @@ function validateForm(form) {
   }
 
   let validateFlag = validateImg(form.flag);
+  console.log(validateFlag);
+  
   if (!validateFlag) {
     showFlagStatus(false, "flag is empty");
     isValidate = false;
@@ -145,6 +195,8 @@ function validateForm(form) {
   }
 
   let validateClub = validateText(form.club);
+  console.log(validateClub);
+  
   if (!validateClub) {
     showClubStatus(false, "club is empty")
     isValidate = false;
@@ -153,6 +205,8 @@ function validateForm(form) {
   }
 
   let validateLogo = validateImg(form.logo);
+  console.log(validateLogo);
+  
   if (!validateLogo) {
     showLogoStatus(false, "logo is empty")
     isValidate = false;
@@ -161,6 +215,8 @@ function validateForm(form) {
   }
 
   let validateRating = validateNumber(form.rating);
+  console.log(validateRating);
+  
   if (!validateRating) {
     showRatingStatus(false, "rating is empty")
     isValidate = false;
@@ -168,6 +224,8 @@ function validateForm(form) {
     showRatingStatus(true, "valide")
   }
   let validatePace = validateNumber(form.pace);
+  console.log(validatePace);
+  
   if (!validatePace) {
     showPaceStatus(false, "pace is empty")
     isValidate = false;
@@ -176,6 +234,8 @@ function validateForm(form) {
   }
 
   let validateShooting = validateNumber(form.shooting);
+  console.log(validateShooting);
+  
   if (!validateShooting) {
     showShootingStatus(false, "shooting is empty")
     isValidate = false;
@@ -184,6 +244,8 @@ function validateForm(form) {
   }
 
   let validatePassing = validateNumber(form.passing);
+  console.log(validatePassing);
+  
   if (!validatePassing) {
     showPassingStatus(false, "passing is empty")
     isValidate = false;
@@ -192,6 +254,8 @@ function validateForm(form) {
   }
 
   let validateDribbling = validateNumber(form.dribbling);
+  console.log(validateDribbling);
+  
   if (!validateDribbling) {
     showDribblingStatus(false, "dribbling is empty")
     isValidate = false;
@@ -200,6 +264,8 @@ function validateForm(form) {
   }
 
   let validateDefending = validateNumber(form.defending);
+  console.log(validateDefending);
+  
   if (!validateDefending) {
     showDefendingStatus(false, "defending is empty")
     isValidate = false;
@@ -209,6 +275,8 @@ function validateForm(form) {
 
 
   let validatePhysical = validateNumber(form.physical);
+  console.log(validatePhysical);
+  
   if (!validatePhysical) {
     showPhysicalStatus(false, "physical is empty")
     isValidate = false;
@@ -216,57 +284,7 @@ function validateForm(form) {
     showPhysicalStatus(true, "valide")
   }
 
-
-  let validateDiving = validateNumber(form.diving);
-  if (!validatePhysical) {
-    showDivingStatus(false, "diving is empty")
-    isValidate = false;
-  } else if (validateDiving) {
-    showDivingStatus(true, "valide")
-  }
-
-  let validateHandling = validateNumber(form.handling);
-  if (!validateHandling) {
-    showHandlingStatus(false, "handling is empty")
-    isValidate = false;
-  } else if (validateHandling) {
-    showHandlingStatus(true, "valide")
-  }
-
-  let validateKicking = validateNumber(form.kicking);
-  if (!validateKicking) {
-    showKickingStatus(false, "physical is empty")
-    isValidate = false;
-  } else if (validateKicking) {
-    showKickingStatus(true, "valide")
-  }
-  let validateReflexes = validateNumber(form.reflexes);
-  if (!validateReflexes) {
-    showReflexesStatus(false, "reflexes is empty")
-    isValidate = false;
-  } else if (validateReflexes) {
-    showReflexesStatus(true, "valide")
-  }
-
-  let validateSpeed = validateNumber(form.speed);
-  if (!validateSpeed) {
-    showSpeedStatus(false, "speed is empty")
-    isValidate = false;
-  } else if (validateSpeed) {
-    showSpeedStatus(true, "valide")
-  }
-
-  let validatePositioning = validateNumber(form.positioning);
-  if (!validatePositioning) {
-    showPositioningStatus(false, "positioning is empty")
-    isValidate = false;
-  } else if (validatePositioning) {
-    showPositioningStatus(true, "valide")
-  }
-  return isValidate;
-
 }
-
 function showNameStatus(status, message) {
   const nameInput = document.getElementById("name");
   const nameErr = document.getElementById("nameErr");
@@ -362,6 +380,8 @@ if (status) {
 function showPaceStatus(status, message) {
     const paceInput = document.getElementById("pace");
     const paceErr = document.getElementById("paceErr");
+    console.log(document.getElementById("paceErr"));
+    
 if (status) {
   paceInput .style.borderColor = "green";
   paceErr.innerText = message;
@@ -515,7 +535,9 @@ function showPositioningStatus(status, message) {
    positioningErr.innerText = message;
    positioningErr.style.color = "red";
  }}
- const Form = document.getElementById("form");
+// let inputs={id:"name",id}
+
+// const inputss =document.getElementById(inputs.id)
  const PlayerName =document.getElementById("name");
  const PlayerNationality =document.getElementById("nationality");
  const PlayerPhoto = document.getElementById("photo");
@@ -529,74 +551,115 @@ function showPositioningStatus(status, message) {
  const PlayerDribbling = document.getElementById("dribbling");
  const PlayerDefending = document.getElementById("defending");
  const PlayerPhysical = document.getElementById("physical");
-submitit.addEventListener("click", () => {
-  let Newplayer = {};
+submitit.addEventListener("click", (e) => {
+  e.preventDefault()
   const form = document.forms["player"];
-  Newplayer.name = PlayerName.value;
-  Newplayer.nationality = PlayerNationality.value;
-  Newplayer.photo = PlayerPhoto.value;
-  Newplayer.logo = PlayerLogo.value;
-  Newplayer.rating = PlayerRating.value;
-  Newplayer.pace = PlayerPace.value;
-  Newplayer.shooting = PlayerShooting.value;
-  Newplayer.dribbling = PlayerDribbling.value;
-  Newplayer.defending = PlayerDefending.value;
-  Newplayer.physical = PlayerPhysical.value;
-  Newplayer.passing = PlayerPassing.value;
-  Newplayer.position = post.value;
+   const Form = document.getElementById("form");
+ 
+
+  let Newplayer = {};
+  
+console.log(Newplayer);
+Newplayer.name = PlayerName.value;
+Newplayer.nationality = PlayerNationality.value;
+Newplayer.photo = PlayerPhoto.value;
+Newplayer.logo = PlayerLogo.value;
+Newplayer.rating = PlayerRating.value;
+Newplayer.pace = PlayerPace.value;
+Newplayer.shooting = PlayerShooting.value;
+Newplayer.dribbling = PlayerDribbling.value;
+Newplayer.defending = PlayerDefending.value;
+Newplayer.physical = PlayerPhysical.value;
+Newplayer.passing = PlayerPassing.value;
+Newplayer.position = post.value;
+  console.log(Newplayer);
   // let isValidate = validateForm(form);
   // if (isValidate) {
+
     document.getElementById("submitPlayer").click();
-    document.getElementById("closeModal").click();
+    
     data.players.unshift(Newplayer)
-    // console.log(Newplayer)
+   
+    PlayerName.value = " ";
+   PlayerNationality.value= " ";
+   PlayerPhoto.value= " ";
+   PlayerLogo.value= " ";
+ PlayerRating.value= " ";
+ PlayerPace.value= " ";
+PlayerShooting.value= " ";
+PlayerDribbling.value= " ";
+PlayerDefending.value= " ";
+ PlayerPhysical.value= " ";
+ PlayerPassing.value= " ";
+ post.value= " ";
+   document.getElementById("closeModal").click();
+  
   // }
+  
 });
+let select ; 
+let father
+function ajouttr(plr){
+   father = plr.closest(".items")
+  console.log(father)
+  select =  true 
+}
+document.getElementById("playersList").addEventListener("click", function(e){
+  
+  if(select){
+    father.innerHTML = ""
+
+    father.appendChild(e.target.closest(".players-contain"))
+    select = false
+  }
+  
+
+})
 
 // Iterate over each element with the class "items"
-Array.from(document.getElementsByClassName("items")).forEach((item) => {
-  item.addEventListener("click", (e) => {
-    // Get the "position" attribute of the clicked element
-    let position = e.currentTarget.getAttribute("position");
-    // console.log(position)
-    // Filter the player data based on the "position"
-    let html = ""
-    let filteredPlayers = data.players.filter(player => player.position.toLowerCase() == position.toLowerCase());
-    filteredPlayers.forEach(player => {
-      html +=
-        `  <div class="players-contain" >
-  <div class ="player-contain1">
-      <div class="flex ">
-      <div class="player_adjuster font-bold text-xl font-mono">
-      <h6>${player.position}</h6>
-      <h4>${player.rating}</h4>
-      </div>
-      <img src="${player.photo}" alt="">
-      </div>
-      <div class="bg-blue-900/80 ">
-    <h6 class="text-lg text-center text-yellow-500 text-wrap" > ${player.name}</h6>
-</div>
-<div class=" text-center">
-      <span>${player.rating}</span>
-      <span>${player.pace || player.diving}</span>
-      <span>${player.shooting || player.handling}</span>
-      <span>${player.passing || player.kicking}</span>
-      <span>${player.dribbling || player.reflexes}</span>
-      <span>${player.defending || player.speed}</span>
-      <span>${player.physical || player.positioning}</span>
-    <p>${player.nationality}</p> 
-    <div style="padding-bottom: 50px;" class="flex justify-evenly">
-    <img style="border-radius: 50%; width:20px; height:20px"  src="${player.flag}" alt="">
-    <img style="border-radius: 50%; width:20px; height:20px"  src="${player.logo}" alt="">
-    </div>
-  </div>
-</div>
+// Array.from(document.getElementsByClassName("items")).forEach((item) => {
+//   item.addEventListener("click", (e) => {
+//     // Get the "position" attribute of the clicked element
+//     let position = e.currentTarget.getAttribute("position");
+//     // console.log(position)
+//     // Filter the player data based on the "position"
+//     let html = ""
+//     let filteredPlayers = data.players.filter(player => player.position.toLowerCase() == position.toLowerCase());
+//     filteredPlayers.forEach(player => {
+//       html +=
+//         `  <div class="players-contain" >
+//   <div class ="player-contain1">
+//       <div class="flex ">
+//       <div class="player_adjuster font-bold text-xl font-mono">
+//       <h6>${player.position}</h6>
+//       <h4>${player.rating}</h4>
+//       </div>
+//       <img src="${player.photo}" alt="">
+//       </div>
+//       <div class="bg-blue-900/80 ">
+//     <h6 class="text-lg text-center text-yellow-500 text-wrap" > ${player.name}</h6>
+// </div>
+// <div class=" text-center">
+//       <span>${player.rating}</span>
+//       <span>${player.pace || player.diving}</span>
+//       <span>${player.shooting || player.handling}</span>
+//       <span>${player.passing || player.kicking}</span>
+//       <span>${player.dribbling || player.reflexes}</span>
+//       <span>${player.defending || player.speed}</span>
+//       <span>${player.physical || player.positioning}</span>
+//     <p>${player.nationality}</p> 
+//     <div style="padding-bottom: 50px;" class="flex justify-evenly">
+//     <img style="border-radius: 50%; width:20px; height:20px"  src="${player.flag}" alt="">
+//     <img style="border-radius: 50%; width:20px; height:20px"  src="${player.logo}" alt="">
+//     </div>
+//   </div>
+// </div>
  
-</div>`
+// </div>`
 
-    })
-    document.getElementById("list").innerHTML = html
-    // Do something with the filtered players, for example, log them
-    // console.log(filteredPlayers);
-  });
-});
+//     })
+//     document.getElementById("list").innerHTML = html
+//     // Do something with the filtered players, for example, log them
+//     // console.log(filteredPlayers);
+//   });
+// });
