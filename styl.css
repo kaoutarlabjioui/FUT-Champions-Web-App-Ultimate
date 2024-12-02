@@ -17,7 +17,7 @@ body {
 
   .player-contain1 {
     color: #ffd972;
-    background: url(./src/assets/img/toty.jpg) no-repeat;
+    background: url(./src/assets/img/toty.png) no-repeat;
     height: 300px;
     width: 180px;
     display: flex;
@@ -105,12 +105,45 @@ body {
     padding-right: 0px;
     /* Optional, to ensure the scrollbar doesn't cover content */
   }
+  .icone-supp {
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 20px;
+ }
+ .icone-supp:hover {
+    color: darkred;
+ }
 
   #container {
     background-image: url("./src/assets/img/stadium.svg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     height: 90%;
+    width: 64%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr 1fr  1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". lw cf rw ."
+      ". . . . ."
+      "cml . . . cmr"
+      ". . dm .  ."
+      "lb . . . rb"
+      ". cb1 . cb2 ."
+      ". . gk . .";
+  }
+  /* Tablet */
+@media (max-width: 1024px) {
+  #container {
+    background-image: url("./src/assets/img/stadium.svg");
+    background-position: center;
+    height: 50%;
     width: 64%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -124,7 +157,42 @@ body {
       "lb . . . rb"
       ". cb1 . cb2 .."
       ". . gk . .";
+      flex: 3;
   }
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  body {
+    height: 100vh;
+   
+  }
+  #container {
+    background-image: none;
+    width: 90%;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;  /* 3 colonnes */
+    grid-template-rows:  2fr 1fr 1fr 1fr 1fr;  /* Ajuster les lignes pour plus de flexibilité */
+    grid-template-areas:
+      ". lw cf"
+      ". cml cmr"
+      ". dm ."
+      "lb . rb"
+      ". cb1 cb2"
+      ". . gk";
+    order:1;
+
+  
+  }
+  
+    .items {
+      height: 60px; /* Réduire encore la hauteur sur des écrans plus petits */
+    }
+    #addplayers{
+
+    order:2;
+    flex: 1;
+
+}}
   .form-container {
     background: #ffffff;
     border-radius: 10px;
