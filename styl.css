@@ -105,6 +105,17 @@ body {
     padding-right: 0px;
     /* Optional, to ensure the scrollbar doesn't cover content */
   }
+  .icone-supp {
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 20px;
+ }
+ .icone-supp:hover {
+    color: darkred;
+ }
 
   #container {
     background-image: url("./src/assets/img/stadium.svg");

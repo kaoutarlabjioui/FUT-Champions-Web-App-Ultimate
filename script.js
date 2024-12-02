@@ -1,36 +1,19 @@
 
-// var postplayer = document.querySelectorAll(".items");
-// postplayer = Array.from(postplayer); //convert de node selected to arry
-// var playerPost = " ";
-// postplayer.forEach((item) => {
-
-//   item.addEventListener("click", () => {
-
-//     playerPost = item.attributes.id.value;
-//     // localStorage.setItem("playerPost","playerPost")
-
-//   })
-
-// })
 var data = [];
 async function load() {
   try {
     const response = await fetch('players.json')
     data = await response.json();
-    // console.log(data)
+    AfficheData(data)
   } catch (error) {
     console.error("error fetching json file", error);
   }
-
 }
 load()
-
+function AfficheData(data){
 Array.from(document.getElementsByClassName("items")).forEach((item) => {
   item.addEventListener("click", (e) => {
-    // Get the "position" attribute of the clicked element
-    let position = e.currentTarget.getAttribute("position");
-    // console.log(e.currentTarget)
-    // console.log(position)
+    let position = e.currentTarget.getAttribute("position");// Get the "position" attribute of the clicked element
     // Filter the player data based on the "position"
     let html = ""
     let filteredPlayers = data.players.filter(player => player.position.toLowerCase() == position.toLowerCase());
@@ -52,7 +35,7 @@ Array.from(document.getElementsByClassName("items")).forEach((item) => {
     <span>${player.rating}</span>
     <span>${player.pace || player.diving}</span>
     <span>${player.shooting || player.handling}</span>
-    <span>${player.passing || player.kicking}</span>
+    <span ">${player.passing || player.kicking}</span>
     <span>${player.dribbling || player.reflexes}</span>
     <span>${player.defending || player.speed}</span>
     <span>${player.physical || player.positioning}</span>
@@ -63,22 +46,13 @@ Array.from(document.getElementsByClassName("items")).forEach((item) => {
   </div>
 </div>
 </div>
-
 </div>`
-
-
     })
-    document.getElementById("list").innerHTML = html
-    // Do something with the filtered players, for example, log them
-    // console.log(filteredPlayers);
+    document.getElementById("list").innerHTML = html;
   });
 });
-
-
-
-
+}
 const post = document.getElementById("position");
-
 const infoplayer = document.getElementById("info-player")
 let pace = document.querySelector(".pace");
 let shooting = document.querySelector(".shooting");
@@ -86,6 +60,7 @@ let passing = document.querySelector(".passing");
 let dribbling = document.querySelector(".dribbling");
 let defending = document.querySelector(".defending");
 let physical = document.querySelector(".physical");
+
 post.addEventListener('change', (event) => {
   if (event.target.value === 'GK') {
     pace.innerText = "Diving";
@@ -106,9 +81,6 @@ post.addEventListener('change', (event) => {
   }
 
 });
-
-const submitit = document.getElementById("submitButton");
-console.log(submitit);
 
 function validateText(text) {
   let regex = /^[A-Za-z]+$/;
@@ -135,12 +107,12 @@ function validateNumber(number) {
   }
   return true;
 }
-// function validateSalection(select) {
-//   if(select.value==""){
-// return false
-//   }
-//   return true;
-// }
+function validateSalection(select) {
+  if(select.value==""){
+return false
+  }
+  return true;
+}
 
 
 
@@ -295,7 +267,6 @@ function showNameStatus(status, message) {
   } else if (!status) {
     nameInput.style.borderColor = "red";
     nameErr.innerText = message;
-    // console.log(message)
     nameErr.style.color = "red";
   }
 }
@@ -405,7 +376,6 @@ if (status) {
   shootingErr.style.color = "red";
 }
 }
-
 function showPassingStatus(status, message) {
  const passingInput = document.getElementById("passing");
  const passingErr = document.getElementById("passingErr");
@@ -535,9 +505,7 @@ function showPositioningStatus(status, message) {
    positioningErr.innerText = message;
    positioningErr.style.color = "red";
  }}
-// let inputs={id:"name",id}
 
-// const inputss =document.getElementById(inputs.id)
  const PlayerName =document.getElementById("name");
  const PlayerNationality =document.getElementById("nationality");
  const PlayerPhoto = document.getElementById("photo");
@@ -551,11 +519,11 @@ function showPositioningStatus(status, message) {
  const PlayerDribbling = document.getElementById("dribbling");
  const PlayerDefending = document.getElementById("defending");
  const PlayerPhysical = document.getElementById("physical");
+ const submitit = document.getElementById("submitButton");
+
 submitit.addEventListener("click", (e) => {
   e.preventDefault()
   const form = document.forms["player"];
-   const Form = document.getElementById("form");
- 
 
   let Newplayer = {};
   
@@ -572,14 +540,11 @@ Newplayer.defending = PlayerDefending.value;
 Newplayer.physical = PlayerPhysical.value;
 Newplayer.passing = PlayerPassing.value;
 Newplayer.position = post.value;
-  console.log(Newplayer);
-  // let isValidate = validateForm(form);
-  // if (isValidate) {
-
+  let isValidate = validateForm(form);
+  // console.log(isValidate);
+  if (isValidate) {
     document.getElementById("submitPlayer").click();
-    
     data.players.unshift(Newplayer)
-   
     PlayerName.value = " ";
    PlayerNationality.value= " ";
    PlayerPhoto.value= " ";
@@ -592,74 +557,47 @@ PlayerDefending.value= " ";
  PlayerPhysical.value= " ";
  PlayerPassing.value= " ";
  post.value= " ";
-   document.getElementById("closeModal").click();
-  
-  // }
-  
-});
-let select ; 
-let father
-function ajouttr(plr){
-   father = plr.closest(".items")
-  console.log(father)
-  select =  true 
+ document.getElementById("closeModal").click();
 }
-document.getElementById("playersList").addEventListener("click", function(e){
-  
-  if(select){
-    father.innerHTML = ""
 
-    father.appendChild(e.target.closest(".players-contain"))
-    select = false
-  }
-  
+});
 
+let playerSelected ; 
+let selectedparent;
+function AjoutTerrain(joueur){
+  selectedparent = joueur.closest(".items")
+  playerSelected  =  true 
+}
+document.getElementById("playersList").addEventListener("click", (e)=>{
+  if(playerSelected ){
+    selectedparent.innerHTML = " ";
+    // selectedparent.style.display="none"
+
+    selectedparent.appendChild(e.target.closest(".players-contain"))
+
+const Suppicone=document.createElement("button");
+Suppicone.innerHTML='x';
+
+Suppicone.classList.add('icone-supp');
+e.target.closest(".players-contain").appendChild(Suppicone);
+
+Suppicone.addEventListener('click',(event)=>{
+event.stopPropagation();
+  e.target.closest(".players-contain").innerHTML = `
+  <svg onclick="AjoutTerrain(this)" class="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 xl:w-14 xl:h-14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path d="M9 12H12M15 12H12M12 12V9M12 12V15" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path
+              d="M11.7 1.1732C11.8856 1.06603 12.1144 1.06603 12.3 1.17321L21.2263 6.3268C21.4119 6.43397 21.5263 6.63205 21.5263 6.84641V17.1536C21.5263 17.3679 21.4119 17.566 21.2263 17.6732L12.3 22.8268C12.1144 22.934 11.8856 22.934 11.7 22.8268L2.77372 17.6732C2.58808 17.566 2.47372 17.3679 2.47372 17.1536V6.84641C2.47372 6.63205 2.58808 6.43397 2.77372 6.32679L11.7 1.1732Z"
+              stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </g>
+        </svg>`;
+  console.log( e.target.closest(".players-contain"));
+  // selectedparent.style.display="block";
 })
-
-// Iterate over each element with the class "items"
-// Array.from(document.getElementsByClassName("items")).forEach((item) => {
-//   item.addEventListener("click", (e) => {
-//     // Get the "position" attribute of the clicked element
-//     let position = e.currentTarget.getAttribute("position");
-//     // console.log(position)
-//     // Filter the player data based on the "position"
-//     let html = ""
-//     let filteredPlayers = data.players.filter(player => player.position.toLowerCase() == position.toLowerCase());
-//     filteredPlayers.forEach(player => {
-//       html +=
-//         `  <div class="players-contain" >
-//   <div class ="player-contain1">
-//       <div class="flex ">
-//       <div class="player_adjuster font-bold text-xl font-mono">
-//       <h6>${player.position}</h6>
-//       <h4>${player.rating}</h4>
-//       </div>
-//       <img src="${player.photo}" alt="">
-//       </div>
-//       <div class="bg-blue-900/80 ">
-//     <h6 class="text-lg text-center text-yellow-500 text-wrap" > ${player.name}</h6>
-// </div>
-// <div class=" text-center">
-//       <span>${player.rating}</span>
-//       <span>${player.pace || player.diving}</span>
-//       <span>${player.shooting || player.handling}</span>
-//       <span>${player.passing || player.kicking}</span>
-//       <span>${player.dribbling || player.reflexes}</span>
-//       <span>${player.defending || player.speed}</span>
-//       <span>${player.physical || player.positioning}</span>
-//     <p>${player.nationality}</p> 
-//     <div style="padding-bottom: 50px;" class="flex justify-evenly">
-//     <img style="border-radius: 50%; width:20px; height:20px"  src="${player.flag}" alt="">
-//     <img style="border-radius: 50%; width:20px; height:20px"  src="${player.logo}" alt="">
-//     </div>
-//   </div>
-// </div>
- 
-// </div>`
-
-//     })
-//     document.getElementById("list").innerHTML = html
-//     // Do something with the filtered players, for example, log them
-//     // console.log(filteredPlayers);
-//   });
-// });
+    playerSelected  = false
+  }
+});
