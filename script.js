@@ -10,16 +10,16 @@ async function load() {
   }
 }
 load()
-function AfficheData(data){
-Array.from(document.getElementsByClassName("items")).forEach((item) => {
-  item.addEventListener("click", (e) => {
-    let position = e.currentTarget.getAttribute("position");// Get the "position" attribute of the clicked element
-    // Filter the player data based on the "position"
-    let html = ""
-    let filteredPlayers = data.players.filter(player => player.position.toLowerCase() == position.toLowerCase());
-    filteredPlayers.forEach(player => {
-      html +=
-      `  <div class="players-contain" >
+function AfficheData(data) {
+  Array.from(document.getElementsByClassName("items")).forEach((item) => {
+    item.addEventListener("click", (e) => {
+      let position = e.currentTarget.getAttribute("position");// Get the "position" attribute of the clicked element
+      // Filter the player data based on the "position"
+      let html = ""
+      let filteredPlayers = data.players.filter(player => player.position.toLowerCase() == position.toLowerCase());
+      filteredPlayers.forEach(player => {
+        html +=
+          `  <div class="players-contain" >
 <div class ="player-contain1">
     <div class="flex ">
     <div class="player_adjuster font-bold text-xl font-mono">
@@ -47,10 +47,10 @@ Array.from(document.getElementsByClassName("items")).forEach((item) => {
 </div>
 </div>
 </div>`
-    })
-    document.getElementById("list").innerHTML = html;
+      })
+      document.getElementById("list").innerHTML = html;
+    });
   });
-});
 }
 const post = document.getElementById("position");
 const infoplayer = document.getElementById("info-player")
@@ -64,19 +64,19 @@ let physical = document.querySelector(".physical");
 post.addEventListener('change', (event) => {
   if (event.target.value === 'GK') {
     pace.innerText = "Diving";
-    shooting.innerText="Handling";
-    passing.innerText="Kicking";
-    dribbling.innerText="Reflexes";
-    defending.innerText="Speed";
-    physical.innerText="Positioning";
+    shooting.innerText = "Handling";
+    passing.innerText = "Kicking";
+    dribbling.innerText = "Reflexes";
+    defending.innerText = "Speed";
+    physical.innerText = "Positioning";
   }
   else {
     pace.innerText = "Pace";
-    shooting.innerText="Shooting";
-    passing.innerText="Passing";
-    dribbling.innerText="Dribbling";
-    defending.innerText="Defending";
-    physical.innerText="Physical";
+    shooting.innerText = "Shooting";
+    passing.innerText = "Passing";
+    dribbling.innerText = "Dribbling";
+    defending.innerText = "Defending";
+    physical.innerText = "Physical";
 
   }
 
@@ -84,7 +84,7 @@ post.addEventListener('change', (event) => {
 
 function validateText(text) {
   let regex = /^[A-Za-z]+$/;
-  if ( !regex.test(text.value)) {
+  if (!regex.test(text.value)) {
     return false
   }
 
@@ -93,9 +93,9 @@ function validateText(text) {
 
 function validateImg(photo) {
   let regex = /^(http:\/\/|https:\/\/)/;
-   if (!regex.test(photo.value)){
-  return false ;
-}
+  if (!regex.test(photo.value)) {
+    return false;
+  }
   return true;
 }
 
@@ -108,20 +108,20 @@ function validateNumber(number) {
   return true;
 }
 function validateSalection(select) {
-  if(select.value==""){
-return false
+  if (select.value == "") {
+    return false
   }
   return true;
 }
 
-
-
+let isValidate;
 function validateForm(form) {
-  let isValidate = true;
+  console.log("Test 1");
+  isValidate = true;
 
   let validateName = validateText(form.name);
   console.log(validateName);
-  
+
   if (!validateName) {
     showNameStatus(false, "name is empty");
     isValidate = false;
@@ -131,7 +131,7 @@ function validateForm(form) {
 
   let validatePhoto = validateImg(form.photo);
   console.log(validatePhoto);
-  
+
   if (!validatePhoto) {
     showPhotoStatus(false, "url is empty");
     isValidate = false;
@@ -148,7 +148,7 @@ function validateForm(form) {
 
   let validateNationality = validateText(form.nationality);
   console.log(validateNationality);
-  
+
   if (!validateNationality) {
     showNationalityStatus(false, "Nationality is empty");
     isValidate = false;
@@ -158,7 +158,7 @@ function validateForm(form) {
 
   let validateFlag = validateImg(form.flag);
   console.log(validateFlag);
-  
+
   if (!validateFlag) {
     showFlagStatus(false, "flag is empty");
     isValidate = false;
@@ -168,7 +168,7 @@ function validateForm(form) {
 
   let validateClub = validateText(form.club);
   console.log(validateClub);
-  
+
   if (!validateClub) {
     showClubStatus(false, "club is empty")
     isValidate = false;
@@ -178,7 +178,7 @@ function validateForm(form) {
 
   let validateLogo = validateImg(form.logo);
   console.log(validateLogo);
-  
+
   if (!validateLogo) {
     showLogoStatus(false, "logo is empty")
     isValidate = false;
@@ -188,7 +188,7 @@ function validateForm(form) {
 
   let validateRating = validateNumber(form.rating);
   console.log(validateRating);
-  
+
   if (!validateRating) {
     showRatingStatus(false, "rating is empty")
     isValidate = false;
@@ -197,7 +197,7 @@ function validateForm(form) {
   }
   let validatePace = validateNumber(form.pace);
   console.log(validatePace);
-  
+
   if (!validatePace) {
     showPaceStatus(false, "pace is empty")
     isValidate = false;
@@ -207,7 +207,7 @@ function validateForm(form) {
 
   let validateShooting = validateNumber(form.shooting);
   console.log(validateShooting);
-  
+
   if (!validateShooting) {
     showShootingStatus(false, "shooting is empty")
     isValidate = false;
@@ -217,7 +217,7 @@ function validateForm(form) {
 
   let validatePassing = validateNumber(form.passing);
   console.log(validatePassing);
-  
+
   if (!validatePassing) {
     showPassingStatus(false, "passing is empty")
     isValidate = false;
@@ -227,7 +227,7 @@ function validateForm(form) {
 
   let validateDribbling = validateNumber(form.dribbling);
   console.log(validateDribbling);
-  
+
   if (!validateDribbling) {
     showDribblingStatus(false, "dribbling is empty")
     isValidate = false;
@@ -237,9 +237,9 @@ function validateForm(form) {
 
   let validateDefending = validateNumber(form.defending);
   console.log(validateDefending);
-  
+
   if (!validateDefending) {
-    showDefendingStatus(false, "defending is empty")
+    showDefendingStatus(false, "no valide")
     isValidate = false;
   } else if (validateDefending) {
     showDefendingStatus(true, "valide")
@@ -248,14 +248,16 @@ function validateForm(form) {
 
   let validatePhysical = validateNumber(form.physical);
   console.log(validatePhysical);
-  
+
   if (!validatePhysical) {
-    showPhysicalStatus(false, "physical is empty")
+    showPhysicalStatus(false, "no valide")
     isValidate = false;
   } else if (validatePhysical) {
     showPhysicalStatus(true, "valide")
   }
 
+  console.log(isValidate);
+  return isValidate;
 }
 function showNameStatus(status, message) {
   const nameInput = document.getElementById("name");
@@ -284,8 +286,8 @@ function showPhotoStatus(status, message) {
   }
 }
 function showNationalityStatus(status, message) {
-   const nationalityInput = document.getElementById("nationality");
-   const nationalityErr = document.getElementById("nationalityErr");
+  const nationalityInput = document.getElementById("nationality");
+  const nationalityErr = document.getElementById("nationalityErr");
   if (status) {
     nationalityInput.style.borderColor = "green";
     nationalityInput.innerText = message;
@@ -298,9 +300,9 @@ function showNationalityStatus(status, message) {
 }
 function showFlagStatus(status, message) {
   const flagInput = document.getElementById("flag");
- const flagErr = document.getElementById("flagErr");
+  const flagErr = document.getElementById("flagErr");
   if (status) {
-    flagInput .style.borderColor = "green";
+    flagInput.style.borderColor = "green";
     flagErr.innerText = message;
     flagErr.style.color = "green";
   } else if (!status) {
@@ -310,8 +312,8 @@ function showFlagStatus(status, message) {
   }
 }
 function showClubStatus(status, message) {
-    const clubInput = document.getElementById("club");
-    const clubErr = document.getElementById("clubErr");
+  const clubInput = document.getElementById("club");
+  const clubErr = document.getElementById("clubErr");
   if (status) {
     clubInput.style.borderColor = "green";
     clubErr.innerText = message;
@@ -325,265 +327,277 @@ function showClubStatus(status, message) {
 function showLogoStatus(status, message) {
   const logoInput = document.getElementById("logo");
   const logoErr = document.getElementById("logoErr");
-if (status) {
-  logoInput.style.borderColor = "green";
-  logoErr.innerText = message;
-  logoErr.style.color = "green";
-} else if (!status) {
-  logoInput.style.borderColor = "red";
-  logoErr.innerText = message;
-  logoErr.style.color = "red";
-}
+  if (status) {
+    logoInput.style.borderColor = "green";
+    logoErr.innerText = message;
+    logoErr.style.color = "green";
+  } else if (!status) {
+    logoInput.style.borderColor = "red";
+    logoErr.innerText = message;
+    logoErr.style.color = "red";
+  }
 }
 function showRatingStatus(status, message) {
   const ratingInput = document.getElementById("rating");
-  const ratingErr   = document.getElementById("ratingErr");
-if (status) {
-  ratingInput.style.borderColor = "green";
-  ratingErr.innerText = message;
-  ratingErr.style.color = "green";
-} else if (!status) {
-  ratingInput.style.borderColor = "red";
-  ratingErr.innerText = message;
-  ratingErr.style.color = "red";
-}
+  const ratingErr = document.getElementById("ratingErr");
+  if (status) {
+    ratingInput.style.borderColor = "green";
+    ratingErr.innerText = message;
+    ratingErr.style.color = "green";
+  } else if (!status) {
+    ratingInput.style.borderColor = "red";
+    ratingErr.innerText = message;
+    ratingErr.style.color = "red";
+  }
 }
 function showPaceStatus(status, message) {
-    const paceInput = document.getElementById("pace");
-    const paceErr = document.getElementById("paceErr");
-    console.log(document.getElementById("paceErr"));
-    
-if (status) {
-  paceInput .style.borderColor = "green";
-  paceErr.innerText = message;
-  paceErr.style.color = "green";
-} else if (!status) {
-  paceInput .style.borderColor = "red";
-  paceErr.innerText = message;
-  paceErr.style.color = "red";
-}
+  const paceInput = document.getElementById("pace");
+  const paceErr = document.getElementById("paceErr");
+  console.log(document.getElementById("paceErr"));
+
+  if (status) {
+    paceInput.style.borderColor = "green";
+    paceErr.innerText = message;
+    paceErr.style.color = "green";
+  } else if (!status) {
+    paceInput.style.borderColor = "red";
+    paceErr.innerText = message;
+    paceErr.style.color = "red";
+  }
 }
 function showShootingStatus(status, message) {
   const shootingInput = document.getElementById("shooting");
   const shootingErr = document.getElementById("shootingErr");
-if (status) {
-  shootingInput.style.borderColor = "green";
-  shootingErr.innerText = message;
-  shootingErr.style.color = "green";
-} else if (!status) {
-  shootingInput.style.borderColor = "red";
-  shootingErr.innerText = message;
-  shootingErr.style.color = "red";
-}
+  if (status) {
+    shootingInput.style.borderColor = "green";
+    shootingErr.innerText = message;
+    shootingErr.style.color = "green";
+  } else if (!status) {
+    shootingInput.style.borderColor = "red";
+    shootingErr.innerText = message;
+    shootingErr.style.color = "red";
+  }
 }
 function showPassingStatus(status, message) {
- const passingInput = document.getElementById("passing");
- const passingErr = document.getElementById("passingErr");
-if (status) {
-  passingInput.style.borderColor = "green";
-  passingErr.innerText = message;
-  passingErr.style.color = "green";
-} else if (!status) {
-  passingInput.style.borderColor = "red";
-  passingErr.innerText = message;
-  passingErr.style.color = "red";
-}
+  const passingInput = document.getElementById("passing");
+  const passingErr = document.getElementById("passingErr");
+  if (status) {
+    passingInput.style.borderColor = "green";
+    passingErr.innerText = message;
+    passingErr.style.color = "green";
+  } else if (!status) {
+    passingInput.style.borderColor = "red";
+    passingErr.innerText = message;
+    passingErr.style.color = "red";
+  }
 }
 function showDribblingStatus(status, message) {
- const dribblingInput = document.getElementById("dribbling");
- const dribblingErr = document.getElementById("dribblingErr");
-if (status) {
-  dribblingInput.style.borderColor = "green";
-  dribblingErr.innerText = message;
-  dribblingErr.style.color = "green";
-} else if (!status) {
-  dribblingInput.style.borderColor = "red";
-  dribblingErr.innerText = message;
-  dribblingErr.style.color = "red";
-}
+  const dribblingInput = document.getElementById("dribbling");
+  const dribblingErr = document.getElementById("dribblingErr");
+  if (status) {
+    dribblingInput.style.borderColor = "green";
+    dribblingErr.innerText = message;
+    dribblingErr.style.color = "green";
+  } else if (!status) {
+    dribblingInput.style.borderColor = "red";
+    dribblingErr.innerText = message;
+    dribblingErr.style.color = "red";
+  }
 }
 function showDefendingStatus(status, message) {
-   const defendingInput = document.getElementById("defending");
-   const defendingErr = document.getElementById("defendingErr");
-if (status) {
-  defendingInput.style.borderColor = "green";
-  defendingErr.innerText = message;
-  defendingErr.style.color = "green";
-} else if (!status) {
-  defendingInput.style.borderColor = "red";
-  defendingErr.innerText = message;
-  defendingErr.style.color = "red";
-}
+  const defendingInput = document.getElementById("defending");
+  const defendingErr = document.getElementById("defendingErr");
+  if (status) {
+    defendingInput.style.borderColor = "green";
+    defendingErr.innerText = message;
+    defendingErr.style.color = "green";
+  } else if (!status) {
+    defendingInput.style.borderColor = "red";
+    defendingErr.innerText = message;
+    defendingErr.style.color = "red";
+  }
 }
 function showPhysicalStatus(status, message) {
   const physicalInput = document.getElementById("physical");
   const physicalErr = document.getElementById("physicalErr");
-if (status) {
-  physicalInput.style.borderColor = "green";
- physicalErr.innerText = message;
- physicalErr.style.color = "green";
-} else if (!status) {
- physicalInput.style.borderColor = "red";
- physicalErr.innerText = message;
- physicalErr.style.color = "red";
-}
+  if (status) {
+    physicalInput.style.borderColor = "green";
+    physicalErr.innerText = message;
+    physicalErr.style.color = "green";
+  } else if (!status) {
+    physicalInput.style.borderColor = "red";
+    physicalErr.innerText = message;
+    physicalErr.style.color = "red";
+  }
 }
 function showDivingStatus(status, message) {
   const divingInput = document.getElementById("diving");
   const divingErr = document.getElementById("divingErr");
-if (status) {
-  divingInput.style.borderColor = "green";
-  divingErr.innerText = message;
-  divingErr.style.color = "green";
-} else if (!status) {
-  divingInput.style.borderColor = "red";
-  divingErr.innerText = message;
-  divingErr.style.color = "red";
-}
+  if (status) {
+    divingInput.style.borderColor = "green";
+    divingErr.innerText = message;
+    divingErr.style.color = "green";
+  } else if (!status) {
+    divingInput.style.borderColor = "red";
+    divingErr.innerText = message;
+    divingErr.style.color = "red";
+  }
 }
 function showHandlingStatus(status, message) {
   const handlingInput = document.getElementById("handling");
   const handlingErr = document.getElementById("handlingErr");
-if (status) {
-  handlingInput.style.borderColor = "green";
-  handlingErr.innerText = message;
-  handlingErr.style.color = "green";
-} else if (!status) {
-  handlingInput.style.borderColor = "red";
-  handlingErr.innerText = message;
-  handlingErr.style.color = "red";
-}
+  if (status) {
+    handlingInput.style.borderColor = "green";
+    handlingErr.innerText = message;
+    handlingErr.style.color = "green";
+  } else if (!status) {
+    handlingInput.style.borderColor = "red";
+    handlingErr.innerText = message;
+    handlingErr.style.color = "red";
+  }
 }
 function showKickingStatus(status, message) {
   const kickingInput = document.getElementById("kicking");
   const kickingErr = document.getElementById("kickingErr");
-if (status) {
-  kickingInput.style.borderColor = "green";
-  kickingErr.innerText = message;
-  kickingErr.style.color = "green";
-} else if (!status) {
-  kickingInput.style.borderColor = "red";
-  kickingErr.innerText = message;
-  kickingErr.style.color = "red";
-}
+  if (status) {
+    kickingInput.style.borderColor = "green";
+    kickingErr.innerText = message;
+    kickingErr.style.color = "green";
+  } else if (!status) {
+    kickingInput.style.borderColor = "red";
+    kickingErr.innerText = message;
+    kickingErr.style.color = "red";
+  }
 }
 function showReflexesStatus(status, message) {
   const reflexesInput = document.getElementById("reflexes");
   const reflexesErr = document.getElementById("reflexesErr");
-if (status) {
-  reflexesInput.style.borderColor = "green";
-  reflexesErr.innerText = message;
-  reflexesErr.style.color = "green";
-} else if (!status) {
-  reflexesInput.style.borderColor = "red";
-  reflexesErr.innerText = message;
-  reflexesErr.style.color = "red";
-}
+  if (status) {
+    reflexesInput.style.borderColor = "green";
+    reflexesErr.innerText = message;
+    reflexesErr.style.color = "green";
+  } else if (!status) {
+    reflexesInput.style.borderColor = "red";
+    reflexesErr.innerText = message;
+    reflexesErr.style.color = "red";
+  }
 }
 function showSpeedStatus(status, message) {
- const speedInput = document.getElementById("speed");
- const speedErr = document.getElementById("speedErr");
-if (status) {
-  speedInput.style.borderColor = "green";
-  speedErr.innerText = message;
-  speedErr.style.color = "green";
-} else if (!status) {
-  speedInput.style.borderColor = "red";
-  speedErr.innerText = message;
-  speedErr.style.color = "red";
-}
+  const speedInput = document.getElementById("speed");
+  const speedErr = document.getElementById("speedErr");
+  if (status) {
+    speedInput.style.borderColor = "green";
+    speedErr.innerText = message;
+    speedErr.style.color = "green";
+  } else if (!status) {
+    speedInput.style.borderColor = "red";
+    speedErr.innerText = message;
+    speedErr.style.color = "red";
+  }
 }
 function showPositioningStatus(status, message) {
- const positioningInput = document.getElementById("positioning");
- const positioningErr = document.getElementById("positioningErr");
- if (status) {
-  positioningInput.style.borderColor = "green";
-   positioningErr.innerText = message;
-   positioningErr.style.color = "green";
- } else if (!status) {
-  positioningInput.style.borderColor = "red";
-   positioningErr.innerText = message;
-   positioningErr.style.color = "red";
- }}
+  const positioningInput = document.getElementById("positioning");
+  const positioningErr = document.getElementById("positioningErr");
+  if (status) {
+    positioningInput.style.borderColor = "green";
+    positioningErr.innerText = message;
+    positioningErr.style.color = "green";
+  } else if (!status) {
+    positioningInput.style.borderColor = "red";
+    positioningErr.innerText = message;
+    positioningErr.style.color = "red";
+  }
+}
 
- const PlayerName =document.getElementById("name");
- const PlayerNationality =document.getElementById("nationality");
- const PlayerPhoto = document.getElementById("photo");
- const PlayerFlag = document.getElementById("photo");
- const PlayerClub = document.getElementById("club");
- const PlayerLogo= document.getElementById("logo");
- const PlayerRating= document.getElementById("rating");
- const PlayerPace= document.getElementById("pace");
- const PlayerShooting = document.getElementById("shooting");
- const  PlayerPassing = document.getElementById("passing");
- const PlayerDribbling = document.getElementById("dribbling");
- const PlayerDefending = document.getElementById("defending");
- const PlayerPhysical = document.getElementById("physical");
- const submitit = document.getElementById("submitButton");
+const PlayerName = document.getElementById("name");
+const PlayerNationality = document.getElementById("nationality");
+const PlayerPhoto = document.getElementById("photo");
+const PlayerFlag = document.getElementById("photo");
+const PlayerClub = document.getElementById("club");
+const PlayerLogo = document.getElementById("logo");
+const PlayerRating = document.getElementById("rating");
+const PlayerPace = document.getElementById("pace");
+const PlayerShooting = document.getElementById("shooting");
+const PlayerPassing = document.getElementById("passing");
+const PlayerDribbling = document.getElementById("dribbling");
+const PlayerDefending = document.getElementById("defending");
+const PlayerPhysical = document.getElementById("physical");
+const submitit = document.getElementById("submitButton");
+
+console.log(submitit);
+
+const sunform=document.getElementById("addPlayr");
+
+sunform.addEventListener('submit',(e)=>{
+  e.preventDefault();
+})
 
 submitit.addEventListener("click", (e) => {
   e.preventDefault()
   const form = document.forms["player"];
 
   let Newplayer = {};
-  
-console.log(Newplayer);
-Newplayer.name = PlayerName.value;
-Newplayer.nationality = PlayerNationality.value;
-Newplayer.photo = PlayerPhoto.value;
-Newplayer.logo = PlayerLogo.value;
-Newplayer.rating = PlayerRating.value;
-Newplayer.pace = PlayerPace.value;
-Newplayer.shooting = PlayerShooting.value;
-Newplayer.dribbling = PlayerDribbling.value;
-Newplayer.defending = PlayerDefending.value;
-Newplayer.physical = PlayerPhysical.value;
-Newplayer.passing = PlayerPassing.value;
-Newplayer.position = post.value;
-  let isValidate = validateForm(form);
-  // console.log(isValidate);
+
+  console.log(Newplayer);
+  Newplayer.name = PlayerName.value;
+  Newplayer.nationality = PlayerNationality.value;
+  Newplayer.photo = PlayerPhoto.value;
+  Newplayer.logo = PlayerLogo.value;
+  Newplayer.rating = PlayerRating.value;
+  Newplayer.pace = PlayerPace.value;
+  Newplayer.shooting = PlayerShooting.value;
+  Newplayer.dribbling = PlayerDribbling.value;
+  Newplayer.defending = PlayerDefending.value;
+  Newplayer.physical = PlayerPhysical.value;
+  Newplayer.passing = PlayerPassing.value;
+  Newplayer.position = post.value;
+  isValidate = validateForm(form);
+  console.log(isValidate);
+
   if (isValidate) {
+    console.log("ana hna");
+    
     document.getElementById("submitPlayer").click();
     data.players.unshift(Newplayer)
     PlayerName.value = " ";
-   PlayerNationality.value= " ";
-   PlayerPhoto.value= " ";
-   PlayerLogo.value= " ";
- PlayerRating.value= " ";
- PlayerPace.value= " ";
-PlayerShooting.value= " ";
-PlayerDribbling.value= " ";
-PlayerDefending.value= " ";
- PlayerPhysical.value= " ";
- PlayerPassing.value= " ";
- post.value= " ";
- document.getElementById("closeModal").click();
-}
+    PlayerNationality.value = " ";
+    PlayerPhoto.value = " ";
+    PlayerLogo.value = " ";
+    PlayerRating.value = " ";
+    PlayerPace.value = " ";
+    PlayerShooting.value = " ";
+    PlayerDribbling.value = " ";
+    PlayerDefending.value = " ";
+    PlayerPhysical.value = " ";
+    PlayerPassing.value = " ";
+    post.value = " ";
+    document.getElementById("closeModal").click();
+  }
 
 });
 
-let playerSelected ; 
+let playerSelected;
 let selectedparent;
-function AjoutTerrain(joueur){
+function AjoutTerrain(joueur) {
   selectedparent = joueur.closest(".items")
-  playerSelected  =  true 
+  playerSelected = true
 }
-document.getElementById("playersList").addEventListener("click", (e)=>{
-  if(playerSelected ){
+document.getElementById("playersList").addEventListener("click", (e) => {
+  if (playerSelected) {
     selectedparent.innerHTML = " ";
     // selectedparent.style.display="none"
 
     selectedparent.appendChild(e.target.closest(".players-contain"))
 
-const Suppicone=document.createElement("button");
-Suppicone.innerHTML='x';
+    const Suppicone = document.createElement("button");
+    Suppicone.innerHTML = 'x';
 
-Suppicone.classList.add('icone-supp');
-e.target.closest(".players-contain").appendChild(Suppicone);
+    Suppicone.classList.add('icone-supp');
+    e.target.closest(".players-contain").appendChild(Suppicone);
 
-Suppicone.addEventListener('click',(event)=>{
-event.stopPropagation();
-  e.target.closest(".players-contain").innerHTML = `
+    Suppicone.addEventListener('click', (event) => {
+      event.stopPropagation();
+      e.target.closest(".players-contain").innerHTML = `
   <svg onclick="AjoutTerrain(this)" class="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 xl:w-14 xl:h-14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
           <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -595,9 +609,9 @@ event.stopPropagation();
               stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
           </g>
         </svg>`;
-  console.log( e.target.closest(".players-contain"));
-  // selectedparent.style.display="block";
-})
-    playerSelected  = false
+      console.log(e.target.closest(".players-contain"));
+      // selectedparent.style.display="block";
+    })
+    playerSelected = false
   }
 });
