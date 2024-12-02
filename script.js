@@ -114,16 +114,16 @@ function validateSalection(select) {
   return true;
 }
 
+
 let isValidate;
 function validateForm(form) {
-  console.log("Test 1");
   isValidate = true;
 
   let validateName = validateText(form.name);
   console.log(validateName);
 
   if (!validateName) {
-    showNameStatus(false, "name is empty");
+    showNameStatus(false, "not valide");
     isValidate = false;
   } else if (validateName) {
     showNameStatus(true, "valide");
@@ -133,7 +133,7 @@ function validateForm(form) {
   console.log(validatePhoto);
 
   if (!validatePhoto) {
-    showPhotoStatus(false, "url is empty");
+    showPhotoStatus(false, "not valide");
     isValidate = false;
   } else if (validatePhoto) {
     showPhotoStatus(true, "valide");
@@ -150,7 +150,7 @@ function validateForm(form) {
   console.log(validateNationality);
 
   if (!validateNationality) {
-    showNationalityStatus(false, "Nationality is empty");
+    showNationalityStatus(false, "not valide");
     isValidate = false;
   } else if (validateNationality) {
     showNationalityStatus(true, "valide");
@@ -160,7 +160,7 @@ function validateForm(form) {
   console.log(validateFlag);
 
   if (!validateFlag) {
-    showFlagStatus(false, "flag is empty");
+    showFlagStatus(false, "not valide");
     isValidate = false;
   } else if (validateFlag) {
     showFlagStatus(true, "valide");
@@ -170,7 +170,7 @@ function validateForm(form) {
   console.log(validateClub);
 
   if (!validateClub) {
-    showClubStatus(false, "club is empty")
+    showClubStatus(false, "not valide")
     isValidate = false;
   } else if (validateClub) {
     showClubStatus(true, "valide");
@@ -180,7 +180,7 @@ function validateForm(form) {
   console.log(validateLogo);
 
   if (!validateLogo) {
-    showLogoStatus(false, "logo is empty")
+    showLogoStatus(false, "not valide")
     isValidate = false;
   } else if (validateLogo) {
     showLogoStatus(true, "valide")
@@ -190,7 +190,7 @@ function validateForm(form) {
   console.log(validateRating);
 
   if (!validateRating) {
-    showRatingStatus(false, "rating is empty")
+    showRatingStatus(false, "not valide")
     isValidate = false;
   } else if (validateRating) {
     showRatingStatus(true, "valide")
@@ -199,7 +199,7 @@ function validateForm(form) {
   console.log(validatePace);
 
   if (!validatePace) {
-    showPaceStatus(false, "pace is empty")
+    showPaceStatus(false, "not valide")
     isValidate = false;
   } else if (validatePace) {
     showPaceStatus(true, "valide")
@@ -209,7 +209,7 @@ function validateForm(form) {
   console.log(validateShooting);
 
   if (!validateShooting) {
-    showShootingStatus(false, "shooting is empty")
+    showShootingStatus(false, "not valide")
     isValidate = false;
   } else if (validateShooting) {
     showShootingStatus(true, "valide")
@@ -219,7 +219,7 @@ function validateForm(form) {
   console.log(validatePassing);
 
   if (!validatePassing) {
-    showPassingStatus(false, "passing is empty")
+    showPassingStatus(false, "not valide")
     isValidate = false;
   } else if (validatePassing) {
     showPassingStatus(true, "valide")
@@ -229,7 +229,7 @@ function validateForm(form) {
   console.log(validateDribbling);
 
   if (!validateDribbling) {
-    showDribblingStatus(false, "dribbling is empty")
+    showDribblingStatus(false, "not valide")
     isValidate = false;
   } else if (validateDribbling) {
     showDribblingStatus(true, "valide")
@@ -239,7 +239,7 @@ function validateForm(form) {
   console.log(validateDefending);
 
   if (!validateDefending) {
-    showDefendingStatus(false, "no valide")
+    showDefendingStatus(false, "not valide")
     isValidate = false;
   } else if (validateDefending) {
     showDefendingStatus(true, "valide")
@@ -250,14 +250,14 @@ function validateForm(form) {
   console.log(validatePhysical);
 
   if (!validatePhysical) {
-    showPhysicalStatus(false, "no valide")
+    showPhysicalStatus(false, "not valide")
     isValidate = false;
   } else if (validatePhysical) {
     showPhysicalStatus(true, "valide")
   }
 
   console.log(isValidate);
-  return isValidate;
+ git 
 }
 function showNameStatus(status, message) {
   const nameInput = document.getElementById("name");
