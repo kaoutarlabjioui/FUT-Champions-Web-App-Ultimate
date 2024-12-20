@@ -12,9 +12,9 @@ include 'navbar.php';
 <body>
  
 <div class="container mt-5">
-        <form name="player" id="addPlayr" method="post" action="./ajout.php">
+        <form name="player" id="addPlayr" method="post" action="./update.php">
             <div class="bg-light p-4 rounded shadow-sm">
-                <h2 class="mb-4">Add Player</h2>
+                <h2 class="mb-4">Update Player</h2>
 
                 <!-- Name -->
                 <div class="mb-3">
@@ -100,7 +100,7 @@ include 'navbar.php';
                 </div>
                 </div>
             </div>
-             <input type="submit" class="btn btn-primary m-3 d-flex justify-center" name="submit">
+             <input type="submit" class="btn btn-primary m-3 d-flex justify-center"  name="submit">
         </form>
     </div>
 
@@ -112,12 +112,4 @@ include 'navbar.php';
 include 'db.php';
 include 'footer.php';
 ?>
-
-
-
-
-
-
-
-
 

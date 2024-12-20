@@ -1,8 +1,10 @@
 <?php
 $servername="db";
-$db_username="myuser";
-$db_pass="mypassword";
-$db_name="fut_ult";
+$db_username="root";
+$db_pass="rootPassword";
+$db_name="my_database";
+$port=3306;
+
 
 
 

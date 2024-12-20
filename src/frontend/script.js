@@ -550,25 +550,36 @@ submitit.addEventListener("click", (e) => {
   isValidate = validateForm(form);
   console.log(isValidate);
 
+  const inputs = document.querySelectorAll(".inputs");
+  console.log(inputs);
+  
   if (isValidate) {
+    document.querySelector('#submitPlayer').addEventListener('click', (e)=>{
+      e.preventDefault();
+      data.players.unshift(Newplayer)
+      inputs.forEach(input=> {
+       input.value = " ";
+      })
+   })
+      
 
-    console.log("ana hna");
+    // console.log("ana hna");
     
-    document.getElementById("submitPlayer").click();
-    data.players.unshift(Newplayer)
-    PlayerName.value = " ";
-    PlayerNationality.value = " ";
-    PlayerPhoto.value = " ";
-    PlayerLogo.value = " ";
-    PlayerRating.value = " ";
-    PlayerPace.value = " ";
-    PlayerShooting.value = " ";
-    PlayerDribbling.value = " ";
-    PlayerDefending.value = " ";
-    PlayerPhysical.value = " ";
-    PlayerPassing.value = " ";
-    post.value = " ";
-    document.getElementById("closeModal").click();
+    // document.getElementById("submitPlayer").click();
+    // data.players.unshift(Newplayer)
+    // PlayerName.value = " ";
+    // PlayerNationality.value = " ";
+    // PlayerPhoto.value = " ";
+    // PlayerLogo.value = " ";
+    // PlayerRating.value = " ";
+    // PlayerPace.value = " ";
+    // PlayerShooting.value = " ";
+    // PlayerDribbling.value = " ";
+    // PlayerDefending.value = " ";
+    // PlayerPhysical.value = " ";
+    // PlayerPassing.value = " ";
+    // post.value = " ";
+    // document.getElementById("closeModal").click();
   }
 
 });

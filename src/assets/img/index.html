@@ -13,7 +13,7 @@
 </head>
 
 <body
-  class="main_background w-full flex flex-wrap px-[120px] pb-[50px] bg-[url('./src/assets/img/stadium_background.webp')] bg-no-repeat bg-cover">
+  class="main_background w-full h-screen flex flex-wrap  pb-[50px] bg-[url('./src/assets/img/stadium_background.webp')] bg-no-repeat bg-cover">
   <div class="py-[20px]">
     <h5 class="text-white font-[700] text-[20px]">
       EA FC 25 Tactics & Formations
@@ -21,7 +21,7 @@
     <p class="text-white text-[12px]">Build Custom Tactics & Formations</p>
   </div>
   <!-- terrain -->
-  <div class="w-full flex justify-center">
+  <div class="w-full flex justify-center" id="terrain-form">
     <div id="container" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 w-full">
       <div class="item1 items" position="GK" data-modal-target="default-modal" data-modal-toggle="default-modal">
         <svg onclick="AjoutTerrain(this)" class="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 xl:w-14 xl:h-14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -178,7 +178,7 @@
 
           <!-- Main modal -->
           <div id="default" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative p-4 w-full max-w-2xl max-h-full">
+            <div class="relative p-4 w-120 max-w-2xl max-h-full">
               <!-- Modal content -->
               <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <!-- Modal header -->

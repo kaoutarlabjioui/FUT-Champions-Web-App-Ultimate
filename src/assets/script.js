@@ -509,7 +509,7 @@ function showPositioningStatus(status, message) {
   }
 }
 
-const PlayerName = document.getElementById("name");
+const inputs = Array.from(document.querySelectorAll(".inputs"));
 const PlayerNationality = document.getElementById("nationality");
 const PlayerPhoto = document.getElementById("photo");
 const PlayerFlag = document.getElementById("photo");
@@ -524,7 +524,7 @@ const PlayerDefending = document.getElementById("defending");
 const PlayerPhysical = document.getElementById("physical");
 const submitit = document.getElementById("submitButton");
 
-console.log(submitit);
+console.log(inputs[0]);
 
 const sunform=document.getElementById("addPlayr");
 
@@ -555,22 +555,30 @@ submitit.addEventListener("click", (e) => {
   console.log(isValidate);
 
   if (isValidate) {
-    console.log("ana hna");
     
-    document.getElementById("submitPlayer").click();
-    data.players.unshift(Newplayer)
-    PlayerName.value = " ";
-    PlayerNationality.value = " ";
-    PlayerPhoto.value = " ";
-    PlayerLogo.value = " ";
-    PlayerRating.value = " ";
-    PlayerPace.value = " ";
-    PlayerShooting.value = " ";
-    PlayerDribbling.value = " ";
-    PlayerDefending.value = " ";
-    PlayerPhysical.value = " ";
-    PlayerPassing.value = " ";
-    post.value = " ";
+    // document.getElementById("submitPlayer").click();
+    document.querySelector('#submitPlayer').addEventListener('click', (e)=>{
+       e.preventDefault();
+       data.players.unshift(Newplayer)
+       inputs.forEach(input=> {
+        input.value = " ";
+       })
+    })
+       
+
+    // data.players.unshift(Newplayer)
+    // PlayerName.value = " ";
+    // PlayerNationality.value = " ";
+    // PlayerPhoto.value = " ";
+    // PlayerLogo.value = " ";
+    // PlayerRating.value = " ";
+    // PlayerPace.value = " ";
+    // PlayerShooting.value = " ";
+    // PlayerDribbling.value = " ";
+    // PlayerDefending.value = " ";
+    // PlayerPhysical.value = " ";
+    // PlayerPassing.value = " ";
+    // post.value = " ";
     document.getElementById("closeModal").click();
   }
 

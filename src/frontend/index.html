@@ -13,7 +13,7 @@
 </head>
 
 <body
-  class="main_background w-full h-screen flex flex-wrap  pb-[50px] bg-[url('./src/assets/img/stadium_background.webp')] bg-no-repeat bg-cover">
+  class="main_background w-full flex flex-wrap px-[120px] pb-[50px] bg-[url('./src/assets/img/stadium_background.webp')] bg-no-repeat bg-cover">
   <div class="py-[20px]">
     <h5 class="text-white font-[700] text-[20px]">
       EA FC 25 Tactics & Formations
@@ -21,7 +21,7 @@
     <p class="text-white text-[12px]">Build Custom Tactics & Formations</p>
   </div>
   <!-- terrain -->
-  <div class="w-full flex justify-center" id="terrain-form">
+  <div class="w-full flex justify-center">
     <div id="container" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 w-full">
       <div class="item1 items" position="GK" data-modal-target="default-modal" data-modal-toggle="default-modal">
         <svg onclick="AjoutTerrain(this)" class="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 xl:w-14 xl:h-14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -178,7 +178,7 @@
 
           <!-- Main modal -->
           <div id="default" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative p-4 w-120 max-w-2xl max-h-full">
+            <div class="relative p-4 w-full max-w-2xl max-h-full">
               <!-- Modal content -->
               <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <!-- Modal header -->
@@ -196,17 +196,16 @@
 
                 <form name="player" id="addPlayr">
                   <div class="form-container" id="form">
-
                     <label for="name">Name</label>
-                    <input type="text" name="name" id="name" class="name" placeholder="Enter your player name" required />
+                    <input type="text" name="name" id="name" class="inputs name " placeholder="Enter your player name" required />
                     <span id="nameErr"></span>
 
                     <label for="photo">Photo</label>
-                    <input type="url" name="photo" id="photo" class="photo" placeholder="Entre your photo url" required />
+                    <input type="url" name="photo" id="photo" class="inputs photo" placeholder="Entre your photo url" required />
                     <span id="photoErr"></span>
 
                     <label for="position">Position</label>
-                    <select name="position" id="position" class="text-black">
+                    <select name="position" id="position" class="inputs text-black">
                       <option value="0" class="text-black" disabled selected>
                         choose a position
                       </option>
@@ -221,51 +220,50 @@
                     <span id="positionErr"></span>
 
                     <label for="nationality">Nationality</label>
-                    <input type="text" name="nationality" id="nationality" class="nationality" placeholder="Entre your nationality"
+                    <input type="text" name="nationality" id="nationality" class=" inputs nationality" placeholder="Entre your nationality"
                       required />
                       <span id="nationalityErr"></span>
 
                     <label for="flag">Flag</label>
-                    <input type="url" name="flag" id="flag" class="flag" placeholder="Entre your flag url" required />
+                    <input type="url" name="flag" id="flag" class=" inputs flag" placeholder="Entre your flag url" required />
                     <span id="flagErr"></span>
 
                     <label for="club">Club</label>
-                    <input type="text" name="club" id="club" class="club" placeholder="Entre your club name" required />
+                    <input type="text" name="club" id="club" class=" inputs club" placeholder="Entre your club name" required />
                     <span id="clubErr"></span>
 
                     <label for="logo">Logo</label>
-                    <input type="url" name="logo" id="logo" class="logo" placeholder="Entre your logo url" required />
+                    <input type="url" name="logo" id="logo" class=" inputs logo" placeholder="Entre your logo url" required />
                     <span id="logoErr"></span>
 
                     <label for="rating">Rating</label>
-                    <input type="number" name="rating" id="rating" class="rating" placeholder="Entre your rating" required />
+                    <input type="number" name="rating" id="rating" class=" inputs rating" placeholder="Entre your rating" required />
                     <span id="ratingErr"></span>
 
                     <div id="info-player">
-                      <label for="pace"  class="pace">Pace</label>
-                      <input type="number" name="pace" id="pace" class="pace" placeholder="Entre your pace" required />
+                      <label for="pace"  class=" pace">Pace</label>
+                      <input type="number" name="pace" id="pace" class="inputs pace" placeholder="Entre your pace" required />
                       <span id="paceErr"></span>
 
                       <label for="shooting" class="shooting">Shooting</label>
-                      <input type="number" name="shooting" id="shooting" class="shooting" placeholder="Entre your Shooting " required />
+                      <input type="number" name="shooting" id="shooting" class="inputs shooting" placeholder="Entre your Shooting " required />
                       <span id="shootingErr"></span>
 
                       <label for="passing" class="passing" >Passing</label>
-                      <input type="number" name="passing" id="passing" class="passing" placeholder="Entre your passing" required />
+                      <input type="number" name="passing" id="passing" class="inputs passing" placeholder="Entre your passing" required />
                       <span id="passingErr"></span>
 
                       <label for="dribbling" class="dribbling">Dribbling</label>
-                      <input type="number"name="dribbling" id="dribbling" class="dribbling" placeholder="Entre your dribbling" required />
+                      <input type="number"name="dribbling" id="dribbling" class="inputs dribbling" placeholder="Entre your dribbling" required />
                       <span id="dribblingErr"></span>
 
                       <label for="defending" class="defending">Defending</label>
-                      <input type="number" name="defending" id="defending" class="defending" placeholder="Entre your defending" required />
+                      <input type="number" name="defending" id="defending" class="inputs defending" placeholder="Entre your defending" required />
                       <span id="defendingErr"></span>
 
                       <label for="physical" class="physical">Physical</label>
-                      <input type="number" name="physical" id="physical" class="physical" placeholder="Entre your physical" required />
+                      <input type="number" name="physical" id="physical" class="inputs physical" placeholder="Entre your physical" required />
                       <span id="physicalErr"></span>
-
                     </div>
                   </div>
 
