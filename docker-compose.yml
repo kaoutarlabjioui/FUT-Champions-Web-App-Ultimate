@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+
+#   php:
+#     image: php:latest
+#     container_name: php-container
+#     environment:
+#       - PHP_VERSION=8.2
+#     ports:
+#       - "9000:80"
+#     volumes:
+#       - ./src:/var/www/html
+#     networks:
+#       - backend
+
+# networks:
+#   backend:
+#     driver: bridge
+
+  db:
+    image: mysql:latest # Correct database image
+    container_name: mysql-db-fut
+    environment:
+      - MYSQL_ROOT_USER=root
+      - MYSQL_ROOT_PASSWORD=rootPassword
+      - MYSQL_DATABASE=fut_ult
+      - MYSQL_USER=myuser
+      - MYSQL_PASSWORD=mypassword
+    ports:
+      - "3306:3306"
+  # phpmyadmin:
+  #   image: phpmyadmin:latest
+  #   container_name: phpmyadmin
+  #   environment:
+  #     PMA_HOST: db # Connects phpMyAdmin to the 'db' service
+  #     PMA_USER: root
+  #     PMA_PASSWORD: rootpassword
+  #   ports:
+  #     - "8081:80" # Maps port 8081 on the host to port 80 in the phpMyAdmin container
+  #   depends_on:
+  #     - db
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: web-fut
+    ports:
+      - "8088:80" # Maps port 8080 on the host to port 80 on the container
+    volumes:
+      - ./app:/var/www/html # Syncs your code with the container
+    depends_on:
+      - db
